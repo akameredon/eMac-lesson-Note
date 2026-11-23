@@ -64,7 +64,7 @@ Key specific corrections include:
 - The data file and browser-test file pass JavaScript syntax compilation.
 - The browser acceptance suite previously passed **16/16 desktop/mobile Chromium tests** on commit 9a4c78893df1511afb5eca7bb8483b7a64f3853f. That run covered lesson navigation, all 24 lessons, 15 rubrics, tampered licence rejection, CBT scoring, teacher progress reporting, CSV export, offline reload and keyboard/mobile rubric access.
 - Additional assertions now check the specific revised outcomes (webpage/site classification, percentage work, SQLite, AI stages, robot calibration, Python examples, location permissions, email safeguards, ping and safe class-group tasks). The latest run for the current content revision must pass before the final browser-acceptance gate is marked complete.
-- The service-worker cache is now emac-v8 so installed PWA copies refresh the revised lesson data.
+- The service-worker cache is now emac-v9 so installed PWA copies refresh the revised lesson data.
 - CI runs on Ubuntu 24.04 and superseded browser-test runs are cancelled automatically.
 
 These are code, content and browser checks. They do not establish that a learner has completed a physical practical or that a qualified teacher has approved the content.
