@@ -15,7 +15,7 @@ Note: expiry uses the device clock, so this deters casual sharing, not determine
 Edit `data.js`. `CUR` is the full curriculum map; add a `C["ss1-1-4"]={n:[...],q:[...],p:{...}}` entry (key = class-term-week). Question tags: NERDC, WAEC, JAMB, PUTME. A question without `o` is a theory question with a model answer in `e`. Bump `V` in `sw.js` after every content change so phones refresh.
 
 ## Status
-The existing app includes the PWA engine, 70-topic SS1–SS3 curriculum map, offline shell, accessibility settings, Listen, practice, practicals, CBT, progress codes, teacher view and school licence verification. New progress exports report accuracy against questions actually attempted; older progress codes remain readable and are labelled as legacy scores.
+The existing app includes the PWA engine, 70-topic SS1–SS3 curriculum map, offline shell, accessibility settings, Listen, practice, practicals, CBT, progress codes, teacher view and school licence verification. New progress exports report accuracy against questions actually attempted; older progress codes remain readable and are labelled as legacy scores. The licence-verification code is present but not configured in this repository until `pub.json` matching the intended private signing key is supplied.
 
 The SS1 NERDC improvement branch preserves the existing topic map and adds first-pass content for the six reference lessons plus revised curriculum coverage in networking, web development, digital entrepreneurship, computational thinking, Python foundations, data science, databases, AI and robotics. See [the SS1 NERDC alignment register](docs/SS1-NERDC-ALIGNMENT.md) for the mapping and limitations.
 
