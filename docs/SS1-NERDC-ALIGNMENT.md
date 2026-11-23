@@ -402,4 +402,11 @@ These sources support selected historical milestones; they do not establish full
 
 ### Verification limits
 
-Source-level validation completed: both `data.js` and `app.js` pass JavaScript syntax compilation; evaluating `data.js` produces all 24 SS1 lesson records; the four new rubrics each contain four criteria with three performance levels; and the renderer contains the semantic rubric table template. This does not execute the browser UI. Practical-table rendering, mobile/desktop layout, keyboard navigation and screen-reader reading order still require real-browser verification. No teacher sign-off, official-PDF line-by-line verification, merge or deployment is implied.
+Source-level validation completed: both `data.js` and `app.js` pass JavaScript syntax compilation; evaluating `data.js` produces all 24 SS1 lesson records; and 15 practical lessons now define four-criterion rubrics with three performance levels each. The renderer contains the semantic rubric table template. This does not execute the browser UI. Practical-table rendering, mobile/desktop layout, keyboard navigation and screen-reader reading order still require real-browser verification. No teacher sign-off, official-PDF line-by-line verification, merge or deployment is implied.
+
+
+### Expanded practical rubrics — 23 November 2026
+
+Added the same three-level, four-criterion evidence rubric to eleven further practical lessons: `ss1-1-2` history timeline; `ss1-1-4` hardware; `ss1-1-6` computational thinking/Python; `ss1-1-8` operating systems; `ss1-1-9` maintenance; `ss1-2-2` web development; `ss1-2-6` online safety; `ss1-2-8` cybersecurity; `ss1-3-2` data collection; `ss1-3-3` spreadsheet interpretation; and `ss1-3-8` relational database practical.
+
+Together with the four earlier rubric lessons (`ss1-2-1`, `ss1-3-4`, `ss1-3-9`, `ss1-3-10`), 15 practical lessons now have four assessment criteria, each described at Not yet demonstrated, Developing and Competent levels. Existing learner checklists remain in place. The rubric descriptors assess the quality of evidence and the safe/ethical process, not just task completion.
