@@ -43,7 +43,7 @@ async function openLesson(page,key) {
 }
 async function openPractical(page,key) {
   await openLesson(page,key);
-  await page.locator('button[data-a="tab"][data-v="p"]').click();
+  await page.locator('.lesson-tabs button[data-a="tab"][data-v="p"]').click();
 }
 const ALL_SS1_LESSONS = ["ss1-1-1","ss1-1-2","ss1-1-3","ss1-1-4","ss1-1-6","ss1-1-8","ss1-1-9","ss1-1-10","ss1-2-1","ss1-2-2","ss1-2-3","ss1-2-4","ss1-2-6","ss1-2-8","ss1-2-9","ss1-2-10","ss1-3-1","ss1-3-2","ss1-3-3","ss1-3-4","ss1-3-6","ss1-3-8","ss1-3-9","ss1-3-10"];
 test("all 24 SS1 lesson records contain notes, practice and practical activities",async ({page})=>{
@@ -64,9 +64,9 @@ test("all 24 SS1 lesson records contain notes, practice and practical activities
     if(key==="ss1-3-10") await expect(page.getByRole("heading",{name:"Build record, control functions and calibration",exact:true})).toBeVisible();
     if(key==="ss1-2-8") await expect(page.getByRole("heading",{name:"Location and privacy controls",exact:true})).toBeVisible();
     if(key==="ss1-2-9") await expect(page.getByRole("heading",{name:"Secure school email",exact:true})).toBeVisible();
-    await page.locator('button[data-a="tab"][data-v="q"]').click();
+    await page.locator('.lesson-tabs button[data-a="tab"][data-v="q"]').click();
     await expect(page.locator(".q").first(),key+" practice questions").toBeVisible();
-    await page.locator('button[data-a="tab"][data-v="p"]').click();
+    await page.locator('.lesson-tabs button[data-a="tab"][data-v="p"]').click();
     await expect(page.locator(".steps li").first(),key+" practical steps").toBeVisible();
     await expect(page.locator(".ck input[type='checkbox']").first(),key+" assessment checklist").toBeVisible();
     if(key==="ss1-2-10") await expect(page.getByText(/teacher-managed, school-approved demonstration account/)).toBeVisible();
@@ -110,7 +110,7 @@ test("all 15 practical rubrics render with accessible table structure and intact
   }
 });
 test("CBT results are recorded and teacher view reads the progress code",async ({page})=>{
-  await page.locator('button[data-a="cbt"]').click();
+  await page.locator('.cbt-banner').click();
   await expect(page.getByRole("heading",{name:"CBT practice"})).toBeVisible();
   await page.locator(".card .opt").first().click();
   await page.locator('button[data-a="sub"]').click();
@@ -155,10 +155,10 @@ test("rubric region supports keyboard focus and mobile horizontal scrolling",asy
 test("existing practice and CBT entry points remain reachable",async ({page})=>{
   await page.locator('button[data-a="topic"][data-k="ss1-1-3"]').click();
   await expect(page.getByRole("heading",{name:"Number Systems",exact:true})).toBeVisible();
-  await page.locator('button[data-a="tab"][data-v="q"]').click();
+  await page.locator('.lesson-tabs button[data-a="tab"][data-v="q"]').click();
   await expect(page.locator(".q").first()).toBeVisible();
   await page.locator('button[data-a="home"]').first().click();
-  await page.locator('button[data-a="cbt"]').click();
+  await page.locator('.cbt-banner').click();
   await expect(page.getByRole("heading",{name:"CBT practice"})).toBeVisible();
 });
 
