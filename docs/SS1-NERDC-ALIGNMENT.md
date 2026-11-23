@@ -59,11 +59,11 @@ Key specific corrections include:
 ## Assessment and technical verification
 
 - **24/24 SS1 lesson records** contain notes, practice questions, practical steps and checklists.
+- The current content audit counts **223 note sections, 131 practice questions, 131 guided practical steps and 132 checklist criteria** across the 24 lesson records.
 - **15 practical lessons** have four-criterion rubrics with three performance levels: Not yet demonstrated, Developing and Competent. Existing learner checklists remain available.
 - The SQLite three-table example was executed against an in-memory SQLite database; its sample JOIN returned the expected learners.
 - The data file and browser-test file pass JavaScript syntax compilation.
-- The browser acceptance suite previously passed **16/16 desktop/mobile Chromium tests** on commit 9a4c78893df1511afb5eca7bb8483b7a64f3853f. That run covered lesson navigation, all 24 lessons, 15 rubrics, tampered licence rejection, CBT scoring, teacher progress reporting, CSV export, offline reload and keyboard/mobile rubric access.
-- Additional assertions now check the specific revised outcomes (webpage/site classification, percentage work, SQLite, AI stages, robot calibration, Python examples, location permissions, email safeguards, ping and safe class-group tasks). The latest run for the current content revision must pass before the final browser-acceptance gate is marked complete.
+- The expanded browser acceptance suite passed **16/16 desktop/mobile Chromium tests** on commit `9d45160c562c885ecded5ec13dfae5e958daaf5f` (GitHub Actions run [#39](https://github.com/akameredon/eMac-lesson-Note/actions/runs/45175697114)). This run includes the specific revised-outcome assertions for all 24 lessons, 15 practical rubrics, webpage/site classification, percentage work, SQLite, AI stages, robot calibration, Python examples, location permissions, email safeguards, ping and safe class-group tasks, alongside CBT, teacher progress, CSV export, offline reload and keyboard/mobile rubric access.
 - The service-worker cache is now emac-v9 so installed PWA copies refresh the revised lesson data.
 - CI runs on Ubuntu 24.04 and superseded browser-test runs are cancelled automatically.
 
