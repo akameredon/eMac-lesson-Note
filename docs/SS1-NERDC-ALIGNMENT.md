@@ -9,6 +9,7 @@
 - Nigerian Educational Research and Development Council (NERDC), *New Revised Senior Secondary School Curriculum: Digital Technologies, SSS 1*, October 2025.
 - Official NERDC curriculum landing page: https://www.nerdc.gov.ng/content_manager/new_senior_curriculum_home.html
 - Official SSS1 curriculum viewer: https://lmis.nerdcportals.com.ng/sss_1/necurrdc/viewer.html?file=4.pdf
+- The official viewer identifies the source document as *New Revised Senior Secondary School Curriculum: Digital Technologies SSS 1*, © October 2025. The PDF is discoverable through the NERDC-hosted portal, although the viewer's interactive page does not expose all pages as readable text in every browser/search interface.
 - A readable transcription of the October 2025 curriculum, used as a secondary reading aid: https://smartest.ng/syllabus/nerdc/ss1/digital-technologies/
 - The transcription publisher states that it is not affiliated with or endorsed by NERDC. Where exact wording matters, the official curriculum PDF takes precedence.
 
@@ -178,18 +179,18 @@ The existing `ss1-1-6` Software lesson has been extended rather than replaced. T
 
 ## Existing app content and curriculum gaps
 
-The initial repository had authored content only for `ss1-1-1` (Introduction) and `ss1-1-3` (Number Systems). The first content improvement on this branch adds full notes, practice questions and practical activities to the original six-lesson reference sequence. A second content pass now adds the remaining revised SS1 competency areas to the closest existing topic slots, as mapped above.
+The initial repository had authored content only for `ss1-1-1` (Introduction) and `ss1-1-3` (Number Systems). This branch now adds lesson records for all 24 entries in the existing SS1 topic map, including notes, practice questions and practical activities. The revised competency areas are integrated into the closest existing topic slots, as mapped above.
 
 - `ss1-1-1` — What is digital technology? (expanded).
 - `ss1-1-4` — Parts of a computer (hardware), including input/output devices and storage devices.
 - `ss1-1-6` — Software.
 - `ss1-2-6` — Staying safe online.
 
-This preserves existing topic IDs and the existing `n`, `q`, and `p` data shape used by the current app. The original Number Systems lesson remains intact. The remaining SS1 topics still need teacher review and any further content required after checking the complete official curriculum. SS2 and SS3 remain a separate future content workstream.
+This preserves existing topic IDs and the existing `n`, `q`, and `p` data shape used by the current app. The original Number Systems lesson remains intact. All 24 SS1 topic IDs have lesson records; this does not establish that every lesson is a one-to-one match for an official revised-curriculum heading. Teacher review and a final line-by-line check against the official PDF remain necessary. SS2 and SS3 remain a separate future content workstream.
 
 The six reference lesson titles are retained in the lesson notes. Hardware, input/output and storage are grouped under the existing Computer Hardware topic because the current app's topic model has no separate topic IDs for those sublessons. The remaining revised SS1 competency areas listed in the coverage matrix now have authored first-pass content in existing topic slots. The old 70-entry outline should still be treated as legacy planning material until each entry is checked against the revised curriculum—not silently assumed to be compliant.
 
-**Automated content validation on the improvement branch:** all 70 existing curriculum-map entries remain present; 13 SS1 topic records now contain lesson content; the six reference lesson titles are present; each of the 13 covered topic records contains notes, questions, practical steps and marking checklist items; multiple-choice answer indexes and model-answer fields pass structural checks. The app JavaScript parses successfully. These are code/data checks, not a substitute for teacher review or browser testing.
+**Automated content validation on the improvement branch:** all 70 existing curriculum-map entries remain present; all 24 SS1 topic records contain lesson content; the six reference lesson titles are present; each of the 24 SS1 topic records contains notes, questions, practical steps and marking checklist items; multiple-choice answer indexes and model-answer fields pass structural checks. The app JavaScript parses successfully. These are code/data checks, not a substitute for teacher review or browser testing.
 
 ## Content quality standard for every completed lesson
 
