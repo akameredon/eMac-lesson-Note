@@ -223,7 +223,7 @@ Each lesson should include, as appropriate:
 
 ## Implementation status
 
-**First-pass content authoring is complete on the improvement branch for the six reference lessons and the remaining revised SS1 competency areas listed in the mapping table.** The existing 70-topic map and app navigation are preserved. The service-worker cache identifier has been advanced from `emac-v1` to `emac-v4` so installed copies can fetch the revised lesson data and subsequent progress-reporting/licence-feedback code changes.
+**Lesson authoring now covers all 24 entries in the existing SS1 topic map.** The six reference lessons and the revised competency areas are retained within the existing topic IDs; the 70-topic SS1–SS3 map and app navigation are preserved. The service-worker cache identifier has been advanced to `emac-v4` so installed copies can fetch the revised lesson data and subsequent progress-reporting/licence-feedback code changes. This is a completeness milestone, not a claim that every lesson has passed teacher review.
 
 This does not mean the SS1 release is complete. Teacher review and browser-level testing remain open.
 
@@ -232,6 +232,7 @@ This does not mean the SS1 release is complete. Teacher review and browser-level
 - Teacher progress exports now use a versioned format that records correct answers, attempted objective questions and the available question count separately. New teacher reports calculate accuracy from attempted questions, rather than treating every unattempted question in the bank as incorrect.
 - Existing unversioned progress codes remain readable and are explicitly labelled as legacy scores because their original export format did not preserve an attempted-question count.
 - Teacher CSV headings now match the on-screen report columns.
+- All 24 existing SS1 map entries now have lesson notes, assessment questions and guided practicals with marking checklists. A structural audit found 199 note sections, 128 questions, 112 practical steps and 122 checklist criteria; every objective answer index and theory model answer passed validation.
 - CBT sessions now add attempted and correct-answer totals to the student's versioned progress code. Teacher reports and CSV exports show CBT attempts and accuracy separately; the submit handler prevents a timed/manual double submission from counting twice. Older progress codes remain readable and show no CBT result when that field was not recorded.
 - The key generator's usage message now matches its actual root-level location (`node keygen.mjs`).
 - When `pub.json` is missing, Settings now explains that licence verification is not configured instead of returning a generic key-check error.
