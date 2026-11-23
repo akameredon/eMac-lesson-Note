@@ -3,7 +3,7 @@ on:
   push:
     branches: [improve/ss1-nerdc-alignment]
   pull_request:
-    branches: [main]
+    branches: [main, improve/ss1-nerdc-alignment]
   workflow_dispatch:
 permissions:
   contents: read
@@ -25,6 +25,9 @@ jobs:
         with:
           python-version: "3.x"
       - run: npm install
+      - name: Run local security tests when present
+        if: hashFiles('tests/keygen.test.mjs') != ''
+        run: npm test
       - run: npx playwright install --with-deps chromium
       - run: npm run test:browser
       - name: Upload failure evidence
