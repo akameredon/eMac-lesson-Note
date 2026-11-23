@@ -221,11 +221,17 @@ Each lesson should include, as appropriate:
 - Do not label newly authored questions as actual WAEC/JAMB past questions unless verified as such. Use labels such as “NERDC practice” or “WAEC-style practice” where appropriate.
 - Keep the main branch untouched during this work; develop on the improvement branch and verify before proposing merge.
 
-## First implementation sequence
+## Implementation status
 
-1. Complete and review the six reference lessons, preserving their titles and sequence.
-2. Add explicit curriculum links to each lesson and mark foundational versus direct coverage.
-3. Build lesson content for the remaining revised SS1 competencies.
-4. Review questions, practicals, answer explanations and marking criteria.
-5. Verify the lesson experience in the existing app, including mobile layout, Listen, progress saving and offline behaviour.
-6. Only after content and tests pass, consider merging the improvement branch.
+**First-pass content authoring is complete on the improvement branch for the six reference lessons and the remaining revised SS1 competency areas listed in the mapping table.** The existing 70-topic map and app navigation are preserved. The service-worker cache identifier has been advanced from `emac-v1` to `emac-v2` so installed copies can fetch the revised lesson data.
+
+This does not mean the SS1 release is complete. Teacher review and browser-level testing remain open.
+
+## Remaining acceptance sequence
+
+1. Teacher review the lesson accuracy, curriculum wording, question answers, practical instructions and marking checklists.
+2. Verify all lessons in the existing app: Notes, Practice, Practical, Listen, CBT, progress code and teacher reporting.
+3. Test on mobile viewport sizes and check keyboard, focus, text scaling, spacing and screen-reader behaviour.
+4. Test a fresh install and an upgrade from the prior service-worker cache; confirm that lesson data is available offline after installation.
+5. Test the existing licence flow, including the missing `pub.json` setup issue documented in the repository audit. Do not generate or rotate signing keys without a migration plan.
+6. Only after content review and browser/offline tests pass, consider merging the improvement branch.
