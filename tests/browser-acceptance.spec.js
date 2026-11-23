@@ -3,18 +3,20 @@ const { webcrypto } = require("node:crypto");
 const RUBRIC_LESSONS = ["ss1-1-2","ss1-1-4","ss1-1-6","ss1-1-8","ss1-1-9","ss1-2-1","ss1-2-2","ss1-2-6","ss1-2-8","ss1-3-2","ss1-3-3","ss1-3-4","ss1-3-8","ss1-3-9","ss1-3-10"];
 const b64url = bytes => Buffer.from(bytes).toString("base64url");
 async function makeTestLicense() {
-  const pair = await webcrypto.subtle.generateKey({name:"ECDSA",namedCurve:"P-256"},true,["sign","verify"]);
-  const pub = await webcrypto.subtle.exportKey("jwk",pair.publicKey);
-  const keyring={version:1,activeKeyId:"test-key-2026",keys:{"test-key-2026":pub}};
-  async function sign(overrides={}) {
-    const payloadBytes=Buffer.from(JSON.stringify({v:2,kid:"test-key-2026",licenceId:"00000000-0000-4000-8000-000000000001",school:"Browser Acceptance Test School",exp:"2099-12-31",...overrides}));
-    const payload=b64url(payloadBytes);
-    const signature=await webcrypto.subtle.sign({name:"ECDSA",hash:"SHA-256"},pair.privateKey,payloadBytes);
-    return payload+"."+b64url(signature);
+  for(let attempt=0;attempt<20;attempt++){
+    const pair=await webcrypto.subtle.generateKey({name:"ECDSA",namedCurve:"P-256"},true,["sign","verify"]);
+    const pub=await webcrypto.subtle.exportKey("jwk",pair.publicKey);
+    const keyring={version:1,activeKeyId:"test-key-2026",keys:{"test-key-2026":pub}};
+    async function sign(overrides={}){
+      const payloadBytes=Buffer.from(JSON.stringify({v:2,kid:"test-key-2026",licenceId:"00000000-0000-4000-8000-000000000001",school:"Browser Acceptance Test School",exp:"2099-12-31",...overrides}));
+      const payload=b64url(payloadBytes);
+      const signature=await webcrypto.subtle.sign({name:"ECDSA",hash:"SHA-256"},pair.privateKey,payloadBytes);
+      return payload+"."+b64url(signature);
+    }
+    const licence=await sign();
+    if(licence.includes("-")&&licence.includes("_"))return{keyring,licence,sign};
   }
-  const licence=await sign();
-  if(!(licence.includes("-")&&licence.includes("_"))) return {keyring,licence,sign};
-  return {keyring,licence,sign};
+  throw new Error("Could not generate a URL-safe Base64 licence fixture");
 }
 test.beforeEach(async ({page}) => {
   const fixture=await makeTestLicense();\n  const {keyring,licence}=fixture;\n  page.licenceFixtures=fixture;
