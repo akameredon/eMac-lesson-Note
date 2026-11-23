@@ -1,4 +1,4 @@
-const V="emac-v6";
+const V="emac-v7";
 const CORE=["./","index.html","styles.css","app.js","data.js","manifest.webmanifest","icon.svg"];
 const OPTIONAL=["icon-192.png","icon-512.png","pub.json"];
 
