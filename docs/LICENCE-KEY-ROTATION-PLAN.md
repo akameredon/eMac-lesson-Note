@@ -1,56 +1,77 @@
-# Licence key recovery and rotation plan
+# Licence key recovery, rotation and school reissue plan
 
-**Status:** approved to prepare the plan; no signing key has been generated, replaced, or deployed.
+**Status:** Owner approved the safe replacement-key and school-reissue process on 23 November 2026. Implementation is in progress on `security/licence-keyring-rotation`. No production keypair has been generated, no school licence has been issued, and no deployment or merge has occurred.
 
-## 1. Current implementation
+## 1. Recovery finding and impact
 
-- The browser fetches `pub.json` and imports one P-256 ECDSA public JWK for signature verification.
-- Licence tokens contain a base64url-encoded JSON payload and an ECDSA/SHA-256 signature.
-- The current payload contains `school` and `exp`; it has no key identifier or licence ID.
-- `keygen.mjs init` creates `private.pem` and `pub.json`, and refuses to overwrite either file.
-- `keygen.mjs issue` signs a licence using the local `private.pem`.
-- Neither key file is present on the current repository branch. The preview cannot verify licences until the matching public key is deployed.
+- The original signing private key and matching public key file (`private.pem` and `pub.json`) were reported lost by the owner.
+- Repository inspection on the SS1 improvement branch found neither file. The existing application expects a single P-256 ECDSA public JWK in `pub.json`.
+- Existing tokens contain only `school` and `exp`, with no key ID or licence ID.
+- Because neither original key is available, the original signatures cannot be verified against a recovered key. **Do not promise that previously issued licence tokens will continue to work.** Affected schools will need replacement tokens after their records are confirmed.
+- The number and identity of affected schools, their original expiry dates, and their licence recipients have not yet been established. No replacement token may be issued until the inventory is reconciled.
 
-## 2. Non-negotiable safety rules
+## 2. Security boundaries
 
-1. Never commit, email, paste into chat, or upload `private.pem` to GitHub.
-2. Do not generate a replacement keypair until we have checked for the original pair and assessed existing school licences.
-3. Preserve any recovered private key in secure encrypted backup.
-4. Do not deploy a new public key until the owner has approved the school reissue plan and the verification tests pass.
-5. Keep production/main untouched until the migration is tested and explicitly approved.
+1. The replacement signing key is generated only on the owner's trusted machine. ChatGPT, GitHub, CI, Vercel and email must never receive the private key.
+2. `private.pem` remains local, owner-only, encrypted in backup, and excluded by `.gitignore`.
+3. Only the public `keys.json` keyring may be committed or deployed.
+4. The issuance command verifies that the local private key matches the active public JWK before signing anything.
+5. No real school licence is issued during automated tests. Browser tests use disposable in-memory test keys.
+6. No production deployment, merge to `main`, or school notification is authorised by this implementation approval alone. Those are separate release actions.
 
-## 3. Recovery-first decision
+## 3. New licence format
 
-**Preferred — recover the original pair:** locate the original `private.pem` in the owner's secure backups and the matching `pub.json`. Verify that the public key derived from the private key matches the recovered JWK. If they match, restore only `pub.json` to the application repository/deployment; keep `private.pem` offline. Existing licences signed by that key should continue to validate.
+The public keyring is a JSON document with `version: 1`, an `activeKeyId`, and a `keys` map of key IDs to public P-256 JWKs. New signed payloads contain:
 
-**Fallback — original private key unavailable:** recover the original `pub.json`, if possible, and retain it as a legacy verification key. Create a new keypair locally only after explicit owner approval. Existing tokens can continue to validate against the old public key while new tokens are signed with the new private key. The current app accepts only one public key, so dual-key verification must be implemented and tested before rollout.
+- `v: 2` — token schema version
+- `kid` — public key identifier
+- `licenceId` — unique UUID for this individual school licence
+- `school` — confirmed school name
+- `exp` — expiry in strict `YYYY-MM-DD` format
 
-**Last resort — neither original key can be recovered:** generate a new keypair only after explicit owner approval. Treat every previously issued token as unverifiable and issue replacement licences to all affected schools. Do not claim old licences remain valid. Obtain a school-by-school inventory and confirm recipient and expiry details before issuing replacements.
+The browser checks the payload shape, key ID, ECDSA/SHA-256 signature and UTC expiry. Unknown key IDs, malformed tokens and missing/invalid keyring configuration fail closed. An optional `legacyKey` slot is reserved only if a trustworthy old public JWK is recovered; none has been found, so no old-key continuity is claimed.
 
-## 4. Required implementation work before rotation
+## 4. Local key ceremony — owner machine only
 
-- Add a versioned public-key configuration/keyring with explicit key IDs; retain legacy token compatibility if the original public key is recovered.
-- Add schema version, key ID, school name, expiry date, and unique licence identifier to new licence payloads.
-- Validate payload shape, signature, expiry, and key ID; reject unknown keys and malformed tokens safely.
-- Keep signing exclusively in the owner's local/offline environment. Do not expose a signing endpoint or put private material in browser code, CI secrets, Vercel environment variables, or the repository.
-- Add tests for valid current and legacy licences, invalid signatures, unknown key IDs, expired licences, malformed payloads, and missing public-key configuration.
-- Use test-only keys for automated tests; never use them for real schools.
+After the isolated code has passed review and tests:
 
-## 5. School reissue and rollout checklist
+1. On a trusted, updated machine, download/check out the approved branch. Do not use a shared or public computer.
+2. Install the project's pinned Node dependencies only if needed; the key utility uses Node built-ins.
+3. Run `node keygen.mjs init` once. It refuses to overwrite existing key material. It creates local `private.pem` with owner-only permissions and public `keys.json`.
+4. Make two encrypted offline backups of `private.pem`, stored separately. Verify that each backup can be read; never send the file to anyone.
+5. Run `node keygen.mjs check` locally. It verifies that the private key matches the active public JWK and prints only a short public fingerprint, never private material.
+6. Review `keys.json` and commit/deploy that public file only after code review and explicit release approval.
+7. Keep `private.pem` on the trusted owner machine for offline issuance. Do not put it in environment variables, a web server, CI, Vercel or the repository.
 
-- [ ] Recover and verify original key material, or record that recovery failed.
-- [ ] Inventory schools holding issued licences and their exact promised expiry dates.
-- [ ] Decide whether existing licences remain verifiable or require reissue.
-- [ ] Implement and test versioned keyring verification on the isolated branch.
-- [ ] Generate a new keypair locally, if required and approved; store the private key in encrypted offline backup.
-- [ ] Deploy only the public JWK and verify it is served over HTTPS.
-- [ ] Issue replacement tokens locally for each confirmed school and verify each in preview before sending.
-- [ ] Notify schools with instructions, a transition deadline, and a support route.
-- [ ] Monitor activation before removing any legacy public key.
-- [ ] Obtain explicit owner approval before merging to main or deploying production.
+If key generation or backup verification fails, stop. Do not improvise by generating another key or copying key material into chat.
 
-## 6. Current release gate
+## 5. School inventory and reissue
 
-**Blocked:** the original keypair and school licence inventory have not been supplied or verified. This document is a plan, not evidence that rotation or reissue has occurred. The current `pub.json` 404 must be resolved before production licence verification can be considered ready.
+Complete `SCHOOL-LICENCE-REISSUE-REGISTER.csv` privately. Do not commit real school names, contacts, token strings or personal information to the repository. For each school, confirm from the owner's records:
 
-The owner should provide the original public JWK file (`pub.json`) and confirm where the matching private key is securely held. Do not share the private key in chat. If the original private key is lost, obtain explicit approval for new-key creation and school licence reissue before changing signing keys.
+- exact legal/display school name and authorised recipient;
+- evidence that a licence was previously sold or issued;
+- promised expiry date and any written renewal terms;
+- current operational contact and a safe delivery channel;
+- replacement status, delivery date, and activation confirmation.
+
+Only after each row is confirmed, issue one replacement token locally:
+
+`node keygen.mjs issue "Confirmed School Name" YYYY-MM-DD`
+
+The utility checks the active keypair match and creates a unique licence ID. Verify each token in the preview before sending it directly to the confirmed recipient. Do not paste real tokens into public issues, source code or chat. Preserve the school's originally promised expiry unless the owner has a documented contractual reason to do otherwise. Do not charge a school again for a replacement necessitated by this key recovery.
+
+## 6. Verification and release gates
+
+- [ ] Isolated branch implements versioned public keyring verification and strict payload/expiry validation.
+- [ ] Tests cover valid signatures, tampered signatures, unknown key IDs, malformed payloads, missing keyring and expired licences.
+- [ ] Local key utility refuses overwrite, rejects invalid expiry, checks private/public match and emits no private material.
+- [ ] Automated test keys are disposable and never used for real schools.
+- [ ] Independent code review and browser acceptance tests pass.
+- [ ] Owner completes the private school inventory and confirms all recipients/expiry dates.
+- [ ] Owner generates and backs up the replacement keypair on a trusted machine.
+- [ ] Public `keys.json` is reviewed and deployed to preview; real replacement tokens are verified there.
+- [ ] School-by-school reissue and activation are reconciled.
+- [ ] Owner separately approves merge to `main` and production deployment.
+
+**Current gate:** implementation is being prepared on an isolated branch. No production key exists yet, no school inventory has been confirmed, and no school reissue has taken place.
