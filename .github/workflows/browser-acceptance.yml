@@ -1,0 +1,41 @@
+name: Browser acceptance
+on:
+  push:
+    branches: [improve/ss1-nerdc-alignment, release/emac-v1-integrated]
+  pull_request:
+    branches: [main, improve/ss1-nerdc-alignment]
+  workflow_dispatch:
+permissions:
+  contents: read
+concurrency:
+  group: browser-acceptance-${{ github.ref }}
+  cancel-in-progress: true
+jobs:
+  chromium:
+    # Pin to a Playwright-supported image; ubuntu-latest moved to 26.04,
+    # which Playwright 1.56.1 does not support for browser dependencies.
+    runs-on: ubuntu-24.04
+    timeout-minutes: 15
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 20
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.x"
+      - run: npm install
+      - name: Run local security tests when present
+        if: hashFiles('tests/keygen.test.mjs') != ''
+        run: npm test
+      - run: npx playwright install --with-deps chromium
+      - run: npm run test:browser
+      - name: Upload failure evidence
+        if: failure()
+        uses: actions/upload-artifact@v4
+        with:
+          name: playwright-failure-evidence
+          path: |
+            test-results/
+            playwright-report/
+          if-no-files-found: ignore
