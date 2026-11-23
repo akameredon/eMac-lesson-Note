@@ -34,8 +34,13 @@ test.beforeEach(async ({page}) => {
   await page.goto("/");
   await expect(page.locator(".lic")).toContainText("Browser Acceptance Test School");
 });
+async function openLesson(page,key) {
+  const term=key.split("-")[1];
+  await page.locator('button[data-term="'+term+'"]').click();
+  await openLesson(page,key);
+}
 async function openPractical(page,key) {
-  await page.locator('button[data-a="topic"][data-k="'+key+'"]').click();
+  await openLesson(page,key);
   await page.locator('button[data-a="tab"][data-v="p"]').click();
 }
 const ALL_SS1_LESSONS = ["ss1-1-1","ss1-1-2","ss1-1-3","ss1-1-4","ss1-1-6","ss1-1-8","ss1-1-9","ss1-1-10","ss1-2-1","ss1-2-2","ss1-2-3","ss1-2-4","ss1-2-6","ss1-2-8","ss1-2-9","ss1-2-10","ss1-3-1","ss1-3-2","ss1-3-3","ss1-3-4","ss1-3-6","ss1-3-8","ss1-3-9","ss1-3-10"];
@@ -45,7 +50,7 @@ test("all 24 SS1 lesson records contain notes, practice and practical activities
     if(!first) await page.locator('button[data-a="home"]').first().click();
     first=false;
     await page.locator('button[data-a="topic"][data-k="'+key+'"]').click();
-    await expect(page.locator(".card h3").first(),key+" notes").toBeVisible();
+    await expect(page.locator(".lesson-section h2").first(),key+" notes").toBeVisible();
     if(key==="ss1-1-6"){
       await expect(page.getByRole("heading",{name:"Sequence, selection and iteration",exact:true})).toBeVisible();
       await expect(page.getByRole("heading",{name:"Selection examples: number classification and mock login",exact:true})).toBeVisible();
@@ -60,7 +65,7 @@ test("all 24 SS1 lesson records contain notes, practice and practical activities
     await page.locator('button[data-a="tab"][data-v="q"]').click();
     await expect(page.locator(".q").first(),key+" practice questions").toBeVisible();
     await page.locator('button[data-a="tab"][data-v="p"]').click();
-    await expect(page.locator(".card ol li").first(),key+" practical steps").toBeVisible();
+    await expect(page.locator(".steps li").first(),key+" practical steps").toBeVisible();
     await expect(page.locator(".ck input[type='checkbox']").first(),key+" assessment checklist").toBeVisible();
     if(key==="ss1-2-10") await expect(page.getByText(/teacher-managed, school-approved demonstration account/)).toBeVisible();
     if(key==="ss1-3-8") await expect(page.getByText(/three related tables/).first()).toBeVisible();
@@ -81,10 +86,10 @@ test("tampered licence signatures are rejected",async ({page})=>{
 });
 test("home and class navigation render without page errors",async ({page})=>{
   const errors=[];page.on("pageerror",error=>errors.push(error.message));
-  await expect(page.getByRole("heading",{name:"Digital Technologies"})).toBeVisible();
+  await expect(page.locator(".hero h1")).toBeVisible();
   await expect(page.locator('button[data-a="cls"]')).toHaveCount(3);
   await page.locator('button[data-a="cls"][data-v="ss2"]').click();
-  await expect(page.getByRole("heading",{name:"Term 1"})).toBeVisible();
+  await expect(page.locator('button[data-term="1"]')).toBeVisible();
   await page.locator('button[data-a="cls"][data-v="ss1"]').click();
   expect(errors).toEqual([]);
 });
@@ -183,4 +188,20 @@ test("missing public keyring fails closed",async ({page})=>{
   });
   await page.locator('button[data-a="lic"]').click();
   await expect(page.locator(".lic")).toContainText("public keyring is missing");
+});
+
+test("Garden home and lesson progress persist across reloads",async ({page})=>{
+  await expect(page.locator(".hero")).toBeVisible();
+  await page.locator('button[data-term="2"]').click();
+  await expect(page.locator('button[data-term="2"]')).toHaveAttribute("aria-pressed","true");
+  await page.locator('button[data-term="1"]').click();
+  await openLesson(page,"ss1-1-1");
+  await page.locator('button[data-a="done"]').click();
+  await page.locator('button[data-a="home"]').first().click();
+  await expect(page.locator(".stat b").first()).toHaveText("1/24");
+  await openPractical(page,"ss1-1-1");
+  await page.locator(".ck input[type=checkbox]").first().check();
+  await page.reload();
+  await openPractical(page,"ss1-1-1");
+  await expect(page.locator(".ck input[type=checkbox]").first()).toBeChecked();
 });
