@@ -86,6 +86,7 @@ document.addEventListener("click",async e=>{const b=e.target.closest("button");i
 if(d.fs){S.fs=+d.fs;apply();sv();return sett()}
 if(d.th){S.th=d.th;apply();sv();return sett()}
 if(b.id=="sp"){S.sp=S.sp?0:1;apply();sv();return sett()}
+if(d.term){S.term=+d.term;sv();home();return}
 switch(d.a){
 case"home":home();break;case"gear":sett();break;case"me":sett();break;case"teach":teach();break;case"tres":tres();break;case"csv":csv();break;case"cbt":cbt();break;case"sub":sub();break;
 case"cls":S.c=d.v;sv();home();break;case"term":S.term=+d.term;sv();home();break;case"done":S.done=S.done.includes(d.k)?S.done.filter(x=>x!==d.k):[...S.done,d.k];sv();topic(d.k,cur.tab||"n");break;case"term":S.term=+d.term;sv();home();break;case"done":S.done=S.done.includes(d.k)?S.done.filter(x=>x!==d.k):[...S.done,d.k];sv();topic(d.k,cur.tab||"n");break;
