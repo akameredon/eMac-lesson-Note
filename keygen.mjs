@@ -6,4 +6,4 @@ fs.writeFileSync("pub.json",JSON.stringify(publicKey.export({format:"jwk"})));
 console.log("Created private.pem (keep secret, never commit) and pub.json (commit it).")}
 else if(cmd=="issue"&&school&&exp){const k=createPrivateKey(fs.readFileSync("private.pem")),p=Buffer.from(JSON.stringify({school,exp})),
 s=createSign("SHA256").update(p).sign({key:k,dsaEncoding:"ieee-p1363"});console.log(b(p)+"."+b(s))}
-else console.log('Usage: node tools/keygen.mjs init | issue "School Name" 2027-07-31');
+else console.log('Usage: node keygen.mjs init | issue "School Name" 2027-07-31');
