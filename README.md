@@ -40,7 +40,7 @@ The Garden UI branch previously passed JavaScript syntax and source-readback che
 
 ## Contributor and maintenance handover
 
-See the [contributor handbook](docs/CONTRIBUTOR-HANDBOOK.md) for repository architecture, local setup, branch/PR rules, lesson authoring, licensing and secret handling, review evidence, release controls and contributor contract handover.
+See the [contributor handbook](docs/CONTRIBUTOR-HANDBOOK.md) for repository architecture, local setup, branch/PR rules, lesson authoring, licensing and secret handling, review evidence and contributor contract handover. The [release and operations runbook](docs/RELEASE-RUNBOOK.md) covers deployment, school licence operations, PWA updates, customer support and rollback.
 
 ## Release register
 
