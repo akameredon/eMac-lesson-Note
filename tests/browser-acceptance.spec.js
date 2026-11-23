@@ -69,6 +69,41 @@ test("all 15 practical rubrics render with accessible table structure and intact
     await expect(page.locator(".ck input[type='checkbox']").first(),key+" original checklist").toBeVisible();
   }
 });
+test("CBT results are recorded and teacher view reads the progress code",async ({page})=>{
+  await page.locator('button[data-a="cbt"]').click();
+  await expect(page.getByRole("heading",{name:"CBT practice"})).toBeVisible();
+  await page.locator(".card .opt").first().click();
+  await page.locator('button[data-a="sub"]').click();
+  await expect(page.getByRole("heading",{name:/Score:/})).toBeVisible();
+  const saved=await page.evaluate(()=>JSON.parse(localStorage.getItem("emac")));
+  expect(saved.b.s).toBe(1);
+  expect(saved.b.a).toBe(1);
+  await page.locator('button[data-a="home"]').first().click();
+  await page.locator('button[data-a="gear"]').click();
+  const progress=await page.locator("textarea[readonly]").inputValue();
+  expect(progress.length).toBeGreaterThan(20);
+  await page.locator('button[data-a="home"]').first().click();
+  await page.locator('button[data-a="teach"]').click();
+  await page.locator("#codes").fill(progress);
+  await page.locator('button[data-a="tres"]').click();
+  await expect(page.locator("#tr")).toContainText("Acceptance Tester");
+  await expect(page.locator("#tr")).toContainText("CBT attempted");
+  const downloadPromise=page.waitForEvent("download");
+  await page.locator('button[data-a="csv"]').click();
+  const download=await downloadPromise;
+  expect(download.suggestedFilename()).toBe("class-results.csv");
+});
+test("core lesson app shell reloads while offline after service-worker install",async ({page})=>{
+  await page.evaluate(()=>navigator.serviceWorker.ready);
+  await page.reload();
+  await page.context().setOffline(true);
+  try {
+    await page.reload();
+    await expect(page.getByRole("heading",{name:"Digital Technologies"})).toBeVisible();
+  } finally {
+    await page.context().setOffline(false);
+  }
+});
 test("rubric region supports keyboard focus and mobile horizontal scrolling",async ({page},testInfo)=>{
   await openPractical(page,"ss1-2-1");
   const region=page.getByRole("region",{name:"Practical assessment rubric"});
