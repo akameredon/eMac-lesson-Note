@@ -75,6 +75,8 @@ ss3:{
 const C={};
 C["ss1-1-1"]={free:1,
 n:[
+["Learning goals","By the end of this lesson, you should be able to define digital technology, distinguish digital from analogue information, identify the main parts of a digital system and give examples of useful and responsible digital technology in your community."],
+["Key words","Digital: information represented using separate values; analogue: information that varies continuously; data: facts or information being handled; hardware: physical equipment; software: programs and instructions."],
 ["What is digital technology?","Digital technology is the use of electronic devices and systems to create, collect, store, process and share information. Most digital computers represent information using two digits: 0 and 1. Each 0 or 1 is called a bit."],
 ["Digital and analogue information","Analogue information can change continuously, like the position of a clock hand or the sound wave from a microphone. Digital information is represented as separate values. A digital clock shows separate number changes. Many devices convert real-world sound, light or movement into digital data so a computer can work with it."],
 ["The parts of a digital system","A digital system usually brings together devices (hardware), instructions (software), information (data), people and a way to communicate or connect. These parts work together. A phone alone is hardware; the apps are software; the photographs and messages are data."],
@@ -103,6 +105,8 @@ p:{s:["Use the converter below.","Type 25 and press Convert. Check that the bina
 
 C["ss1-1-4"]={
 n:[
+["Learning goals","By the end of these connected lessons, you should be able to define hardware, identify common computer parts, explain the basic jobs of the CPU, RAM and ROM, classify input/output devices and compare common storage devices."],
+["Key words","Hardware: physical equipment; input: data sent into a system; output: result produced by a system; memory: working space used by a computer; storage: keeping files for later use; peripheral: a device connected to a computer."],
 ["Parts of a computer (hardware)","Computer hardware means the physical parts of a computer that you can see or touch. Examples include the system unit, monitor, keyboard, mouse, speakers, printer and storage drive. Hardware needs software instructions to perform useful work."],
 ["The main jobs inside a computer","A computer system receives input, processes information, produces output and stores information. The CPU (central processing unit) carries out instructions. The control unit coordinates activities; the arithmetic and logic unit performs calculations and comparisons. The motherboard connects important components."],
 ["Memory: RAM and ROM","RAM is temporary working memory. It holds information and instructions that the computer is using; its contents are normally lost when power is switched off. ROM stores essential instructions used to start or control a device and is designed to retain its contents without normal power. Do not confuse memory with long-term storage."],
@@ -125,6 +129,8 @@ c:["Identified the main visible computer parts","Classified devices correctly an
 }}; 
 C["ss1-1-6"]={
 n:[
+["Learning goals","By the end of this lesson, you should be able to define software, distinguish system software from application software, identify utility software and firmware, and describe safe ways to choose, install and update programs."],
+["Key words","Program: instructions a device can follow; operating system: software that manages a device; application: software for a user task; utility: software for maintenance or protection; firmware: built-in software that controls a device."],
 ["Software","Software is a set of programs and instructions that tells a computer or digital device what to do. Hardware is the physical equipment; software gives the equipment instructions. A computer needs both to perform useful tasks."],
 ["System software","System software manages the computer and provides a platform for other programs. An operating system is a major example. Windows, macOS, Linux, Android and iOS are operating systems. They help manage files, memory, devices, applications and the user interface."],
 ["Application software","Application software helps a user complete a task. Examples include word processors for writing, spreadsheets for calculations, presentation tools for slides, web browsers for viewing websites, media players and drawing applications. A mobile banking app is also application software."],
@@ -145,6 +151,8 @@ c:["Identified an operating system correctly","Named four applications and their
 }};
 C["ss1-2-6"]={
 n:[
+["Learning goals","By the end of this lesson, you should be able to recognise common cyber threats, explain ways to protect accounts and devices, apply privacy and digital-citizenship rules, and describe safe responses to harmful or suspicious online activity."],
+["Key words","Phishing: a deceptive attempt to steal information; malware: harmful software; privacy: control over personal information; digital citizenship: responsible participation online; OTP: one-time password or security code."],
 ["Staying safe online","Online safety means protecting yourself, your information, your device and other people when using the internet. Being connected is useful, but not every message, link, person, website or offer is trustworthy."],
 ["Recognising cyber threats","A phishing message tries to trick you into revealing information or opening a harmful link. Malware is software designed to harm, spy on or take control of a device. Other risks include impersonation, account theft, online scams, cyberbullying, harmful content and the careless sharing of private information."],
 ["Protecting accounts and devices","Use a long, unique password for each important account. Turn on multi-factor authentication when available. Never share a password, PIN or one-time password (OTP), even with someone claiming to be a bank, delivery company or support worker. Keep software updated, use a screen lock and back up important work."],
