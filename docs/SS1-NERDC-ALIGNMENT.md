@@ -223,7 +223,7 @@ Each lesson should include, as appropriate:
 
 ## Implementation status
 
-**First-pass content authoring is complete on the improvement branch for the six reference lessons and the remaining revised SS1 competency areas listed in the mapping table.** The existing 70-topic map and app navigation are preserved. The service-worker cache identifier has been advanced from `emac-v1` to `emac-v3` so installed copies can fetch the revised lesson data and subsequent progress-reporting code changes.
+**First-pass content authoring is complete on the improvement branch for the six reference lessons and the remaining revised SS1 competency areas listed in the mapping table.** The existing 70-topic map and app navigation are preserved. The service-worker cache identifier has been advanced from `emac-v1` to `emac-v4` so installed copies can fetch the revised lesson data and subsequent progress-reporting/licence-feedback code changes.
 
 This does not mean the SS1 release is complete. Teacher review and browser-level testing remain open.
 
@@ -233,6 +233,7 @@ This does not mean the SS1 release is complete. Teacher review and browser-level
 - Existing unversioned progress codes remain readable and are explicitly labelled as legacy scores because their original export format did not preserve an attempted-question count.
 - Teacher CSV headings now match the on-screen report columns.
 - The key generator's usage message now matches its actual root-level location (`node keygen.mjs`).
+- When `pub.json` is missing, Settings now explains that licence verification is not configured instead of returning a generic key-check error.
 - Added `.gitignore` rules for `private.pem`, other PEM files, environment files and generated local dependencies. The key generator now refuses to overwrite an existing `private.pem` or `pub.json`, reducing accidental key rotation risk. No private signing key or public key file exists in this repository branch; `pub.json` is still required and must be created from the intended existing keypair. Do not generate a replacement keypair until the owner confirms no previously issued school keys depend on another private key.
 
 ## Remaining acceptance sequence
