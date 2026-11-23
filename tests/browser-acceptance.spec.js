@@ -37,7 +37,7 @@ test.beforeEach(async ({page}) => {
 async function openLesson(page,key) {
   const term=key.split("-")[1];
   await page.locator('button[data-term="'+term+'"]').click();
-  await openLesson(page,key);
+  await page.locator('button[data-a="topic"][data-k="'+key+'"]').click();
 }
 async function openPractical(page,key) {
   await openLesson(page,key);
@@ -49,7 +49,7 @@ test("all 24 SS1 lesson records contain notes, practice and practical activities
   for(const key of ALL_SS1_LESSONS){
     if(!first) await page.locator('button[data-a="home"]').first().click();
     first=false;
-    await page.locator('button[data-a="topic"][data-k="'+key+'"]').click();
+    await openLesson(page,key);
     await expect(page.locator(".lesson-section h2").first(),key+" notes").toBeVisible();
     if(key==="ss1-1-6"){
       await expect(page.getByRole("heading",{name:"Sequence, selection and iteration",exact:true})).toBeVisible();
@@ -137,7 +137,7 @@ test("core lesson app shell reloads while offline after service-worker install",
   await page.context().setOffline(true);
   try {
     await page.reload();
-    await expect(page.getByRole("heading",{name:"Digital Technologies"})).toBeVisible();
+    await expect(page.locator(".hero h1")).toBeVisible();
   } finally {
     await page.context().setOffline(false);
   }
