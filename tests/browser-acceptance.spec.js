@@ -17,8 +17,17 @@ async function makeTestLicense() {
 }
 test.beforeEach(async ({page}) => {
   const {pub,licence}=await makeTestLicense();
-  await page.route("**/pub.json",route=>route.fulfill({status:200,contentType:"application/json",body:JSON.stringify(pub)}));
-  await page.addInitScript(value=>localStorage.setItem("emac",JSON.stringify({n:"Acceptance Tester",c:"ss1",fs:18,th:"",sp:0,d:{},lic:value})),licence);
+  await page.addInitScript(({value,publicKey})=>{
+    localStorage.setItem("emac",JSON.stringify({n:"Acceptance Tester",c:"ss1",fs:18,th:"",sp:0,d:{},lic:value}));
+    const nativeFetch=window.fetch.bind(window);
+    window.fetch=(input,init)=>{
+      const requestUrl=typeof input==="string"?input:input.url;
+      if(new URL(requestUrl,location.href).pathname.endsWith("/pub.json")){
+        return Promise.resolve(new Response(JSON.stringify(publicKey),{status:200,headers:{"Content-Type":"application/json"}}));
+      }
+      return nativeFetch(input,init);
+    };
+  },{value:licence,publicKey:pub});
   await page.goto("/");
   await expect(page.locator(".lic")).toContainText("Browser Acceptance Test School");
 });
@@ -28,8 +37,10 @@ async function openPractical(page,key) {
 }
 const ALL_SS1_LESSONS = ["ss1-1-1","ss1-1-2","ss1-1-3","ss1-1-4","ss1-1-6","ss1-1-8","ss1-1-9","ss1-1-10","ss1-2-1","ss1-2-2","ss1-2-3","ss1-2-4","ss1-2-6","ss1-2-8","ss1-2-9","ss1-2-10","ss1-3-1","ss1-3-2","ss1-3-3","ss1-3-4","ss1-3-6","ss1-3-8","ss1-3-9","ss1-3-10"];
 test("all 24 SS1 lesson records contain notes, practice and practical activities",async ({page})=>{
+  let first=true;
   for(const key of ALL_SS1_LESSONS){
-    await page.locator('button[data-a="home"]').first().click().catch(()=>{});
+    if(!first) await page.locator('button[data-a="home"]').first().click();
+    first=false;
     await page.locator('button[data-a="topic"][data-k="'+key+'"]').click();
     await expect(page.locator(".card h3").first(),key+" notes").toBeVisible();
     if(key==="ss1-1-6") await expect(page.getByRole("heading",{name:"Sequence, selection and iteration"})).toBeVisible();
@@ -59,8 +70,10 @@ test("home and class navigation render without page errors",async ({page})=>{
   expect(errors).toEqual([]);
 });
 test("all 15 practical rubrics render with accessible table structure and intact checklists",async ({page})=>{
+  let first=true;
   for(const key of RUBRIC_LESSONS){
-    await page.locator('button[data-a="home"]').first().click().catch(()=>{});
+    if(!first) await page.locator('button[data-a="home"]').first().click();
+    first=false;
     await openPractical(page,key);
     const region=page.getByRole("region",{name:"Practical assessment rubric"});
     await expect(region,key+" rubric region").toBeVisible();
@@ -115,7 +128,7 @@ test("rubric region supports keyboard focus and mobile horizontal scrolling",asy
 });
 test("existing practice and CBT entry points remain reachable",async ({page})=>{
   await page.locator('button[data-a="topic"][data-k="ss1-1-3"]').click();
-  await expect(page.getByRole("heading",{name:"Number Systems"})).toBeVisible();
+  await expect(page.getByRole("heading",{name:"Number Systems",exact:true})).toBeVisible();
   await page.locator('button[data-a="tab"][data-v="q"]').click();
   await expect(page.locator(".q").first()).toBeVisible();
   await page.locator('button[data-a="home"]').first().click();
