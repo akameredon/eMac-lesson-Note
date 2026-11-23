@@ -146,16 +146,46 @@ The six lesson titles supplied from the existing Claude artifact are retained as
 | Storage devices | Foundational knowledge for data organisation, database storage and digital asset management. Not a standalone heading in the reproduced list. | Retain; distinguish local storage, removable media, network storage and database storage accurately. |
 | Staying safe online | Directly supports the revised Online Safety competencies: cyber threats, digital citizenship, social media and safe online relationships. | Retain and expand to cover all four areas, including practical scenarios and safe response steps. |
 
+## Additional revised SS1 competency coverage added to existing topics
+
+The next implementation pass adds authored notes, practice questions, model answers, practical steps and marking checklists to existing SS1 topic IDs. The original curriculum map and topic titles remain unchanged.
+
+| Revised SS1 competency area | Existing eMac topic used | Existing topic ID | Coverage added |
+|---|---|---|---|
+| Communication systems: networking | Computer Networks | `ss1-2-1` | LAN/MAN/WAN, components, topologies, transmission media, small-LAN plan and basic troubleshooting |
+| Web development and management | Internet Technologies | `ss1-2-2` | Web development purpose/tools, website types/components/design, HTML structure, CSS syntax/selectors/methods and static page practical |
+| Digital entrepreneurship | Presentation Software | `ss1-3-4` | Digital marketing channels and ads, brand elements, digital asset organisation, digital stories and multimedia presentation |
+| Computational thinking | Computer Software | `ss1-1-6` | Decomposition, pattern recognition, abstraction, algorithms, IPO charts, flowcharts and pseudocode |
+| Python programming for data manipulation | Computer Software | `ss1-1-6` | Variables, expressions, sequence, selection, iteration and introductory debugging practice |
+| Data types and structures | Spreadsheet Applications I | `ss1-3-2` | Qualitative/quantitative and structured/unstructured data, responsible collection and spreadsheet entry |
+| Data collection, visualisation and interpretation | Spreadsheet Applications II | `ss1-3-3` | Mean, median, mode, range, charts, trends, limitations and bias |
+| Database management systems | Database Introduction | `ss1-3-6` | DBMS, tables, fields, records, relational and NoSQL models, primary keys and relationships |
+| Practical database management | Practical Database Management | `ss1-3-8` | Create related tables, use fictional records, store and retrieve data, validate and back up |
+| Artificial intelligence and machine learning | Emerging Technologies I | `ss1-3-9` | AI/ML, models, training data, image classification, testing, accuracy, bias and privacy |
+| Robotics and automation | Emerging Technologies II | `ss1-3-10` | Robot components, sensors/actuators, automation, two-wheel differential drive, design and safe simulation |
+
+The existing `ss1-1-6` Software lesson has been extended rather than replaced. The original topic title, content, ID and navigation remain in place. Existing hardware, online safety and introductory digital technology lessons are also retained.
+
+### Coverage boundaries and teaching notes
+
+- The web practical uses local HTML and CSS files and can be completed without publishing a website.
+- The AI practical has an offline paper-based alternative. An online classifier is optional and must use teacher-approved, non-personal sample images.
+- The robotics practical can be completed as a labelled design or paper-grid simulation when no kit is available. Physical robot construction requires appropriate equipment and supervision.
+- The database practical uses fictional sample records, not real learner data.
+- Spreadsheet and data-science activities use small, privacy-respecting classroom datasets.
+- Python practice requires a teacher-approved Python environment; a paper trace is provided as a fallback where the environment is unavailable.
+- These modules are mapped into the closest existing topic slots to preserve the app's current navigation. The mapping is a teaching integration, not a claim that the legacy term/week sequence is itself the official NERDC sequence.
+
 ## Existing app content and curriculum gaps
 
-The initial repository had authored content only for `ss1-1-1` (Introduction) and `ss1-1-3` (Number Systems). The first content improvement on this branch now adds full notes, practice questions and practical activities to:
+The initial repository had authored content only for `ss1-1-1` (Introduction) and `ss1-1-3` (Number Systems). The first content improvement on this branch adds full notes, practice questions and practical activities to the original six-lesson reference sequence. A second content pass now adds the remaining revised SS1 competency areas to the closest existing topic slots, as mapped above.
 
 - `ss1-1-1` — What is digital technology? (expanded).
 - `ss1-1-4` — Parts of a computer (hardware), including input/output devices and storage devices.
 - `ss1-1-6` — Software.
 - `ss1-2-6` — Staying safe online.
 
-This preserves existing topic IDs and the existing `n`, `q`, and `p` data shape used by the current app. The original Number Systems lesson remains intact. The other 66 curriculum-map entries still need authored content or an explicit decision about their relationship to the revised curriculum.
+This preserves existing topic IDs and the existing `n`, `q`, and `p` data shape used by the current app. The original Number Systems lesson remains intact. The remaining SS1 topics still need teacher review and any further content required after checking the complete official curriculum. SS2 and SS3 remain a separate future content workstream.
 
 The six reference lesson titles are retained in the lesson notes. Hardware, input/output and storage are grouped under the existing Computer Hardware topic because the current app's topic model has no separate topic IDs for those sublessons. The remaining revised NERDC competencies must also be covered in a curriculum-aligned SS1 pathway. The old 70-entry outline should be treated as legacy planning material until each entry is checked against the revised curriculum—not silently assumed to be compliant.
 
