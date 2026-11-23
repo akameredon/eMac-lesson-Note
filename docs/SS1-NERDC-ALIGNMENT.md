@@ -8,10 +8,10 @@
 
 - Nigerian Educational Research and Development Council (NERDC), *New Revised Senior Secondary School Curriculum: Digital Technologies, SSS 1*, October 2025.
 - Official NERDC curriculum landing page: https://www.nerdc.gov.ng/content_manager/new_senior_curriculum_home.html
-- Official SSS1 curriculum viewer: https://lmis.nerdcportals.com.ng/sss_1/necurrdc/viewer.html?file=4.pdf
-- The official viewer identifies the source document as *New Revised Senior Secondary School Curriculum: Digital Technologies SSS 1*, © October 2025. The PDF is discoverable through the NERDC-hosted portal, although the viewer's interactive page does not expose all pages as readable text in every browser/search interface.
-- A readable transcription of the October 2025 curriculum, used as a secondary reading aid: https://smartest.ng/syllabus/nerdc/ss1/digital-technologies/
-- The transcription publisher states that it is not affiliated with or endorsed by NERDC. Where exact wording matters, the official curriculum PDF takes precedence.
+- Official NERDC-hosted PDF: https://lmis.nerdcportals.com.ng/sss_1/necurrdc/4.pdf
+- Official interactive viewer: https://lmis.nerdcportals.com.ng/sss_1/necurrdc/viewer.html?file=4.pdf
+- The primary PDF was opened and read directly. It identifies the source as *New Revised Senior Secondary School Curriculum: Digital Technologies SSS 1*, © October 2025, and its table of contents locates the 17 distinct competency/topic areas on printed pages 1–26 (PDF pages 12–37).
+- A searchable transcription used only as an index: https://smartest.ng/syllabus/nerdc/ss1/digital-technologies/. The publisher states that it is not affiliated with or endorsed by NERDC. The official NERDC PDF controls if wording differs.
 
 ## Important curriculum finding
 
