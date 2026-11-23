@@ -360,3 +360,46 @@ These checks establish source-level content presence and preservation only. A Ja
 5. Complete real-device, accessibility, installation, service-worker upgrade and offline acceptance tests.
 
 **Status:** content corrections applied for the first high-priority gaps; the overall lesson-quality review remains open. No compliance certificate, merge or deployment is implied.
+
+
+## Follow-up lesson and assessment corrections — 23 November 2026
+
+Applied on `improve/ss1-nerdc-alignment`; existing topic IDs, lesson navigation and original curriculum map remain unchanged.
+
+### Hardware, operating systems and history
+
+- **History and evolution (`ss1-1-2`):** added selected milestone dates for the 1946 public unveiling of ENIAC, the 1971 Intel 4004 microprocessor and the 1981 IBM Personal Computer. Added a note that timelines are selective and computer-generation labels are not a universal, rigid chronology, plus a source-checking activity.
+- **Hardware (`ss1-1-4`):** clarified the CPU's role without treating it as the entire system unit; refined the introductory control-unit/ALU explanation; clarified that firmware can be stored in updateable flash memory; added a worked keyboard-to-CPU/RAM-to-monitor-and-storage trace.
+- **Operating systems (`ss1-1-8`):** added a browser/word-processor/printer scenario that makes processor scheduling, memory management, device services and a sensible low-resource response concrete.
+- **Maintenance (`ss1-1-9`):** made cleaning advice explicitly model-specific and directs learners to manufacturer instructions rather than assuming one cloth or product is suitable for every device.
+
+### Practical performance rubrics
+
+Four practicals now include observable three-level performance descriptors in addition to their existing learner checklist:
+- `ss1-2-1` network plan, safe setup, connectivity test and evidence/explanation.
+- `ss1-3-4` audience/message, story structure, media/accessibility and presentation quality.
+- `ss1-3-9` training/test separation, prediction record, accuracy calculation and evaluation/responsibility.
+- `ss1-3-10` component plan, differential-drive explanation, honest build/simulation evidence, safety and test cycle.
+
+The practical view renders these lesson-specific rubrics as a semantic table. Existing checklists remain available; rubrics are additive and appear only on lessons that define them.
+
+### Reduced overlap across online safety lessons
+
+- `ss1-2-6` Staying Safe Online: learner safety, unsafe relationships/coercion, trusted-adult help, safe tagging and class communication.
+- `ss1-2-8` Cybersecurity II: technical/account safeguards, authentication, updates, security tools, backups and incident recovery.
+- `ss1-2-9` Data Privacy and Digital Ethics: personal information, collection, use, consent, digital footprint and respectful handling.
+- `ss1-2-10` Social Media Technologies: platform features, responsible publishing, source/context checking, misinformation and wellbeing.
+
+Overlapping examples remain where they provide necessary context, but each lesson points learners to the lesson that teaches the detailed procedure.
+
+### History source notes
+
+- Computer History Museum, 1946 ENIAC entry: https://www.computerhistory.org/timeline/1946/
+- Computer History Museum, 1971 Intel 4004 entry: https://www.computerhistory.org/timeline/1971/
+- Computer History Museum, 1981 IBM Personal Computer entry: https://www.computerhistory.org/timeline/1981/
+
+These sources support selected historical milestones; they do not establish full coverage of computing history or NERDC curriculum compliance.
+
+### Verification limits
+
+Source-level changes are prepared. JavaScript syntax, practical-table rendering, mobile/desktop layout, keyboard navigation and screen-reader reading order still require verification. No teacher sign-off, official-PDF line-by-line verification, merge or deployment is implied.
