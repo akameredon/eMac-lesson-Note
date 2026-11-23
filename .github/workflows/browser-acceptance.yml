@@ -7,6 +7,9 @@ on:
   workflow_dispatch:
 permissions:
   contents: read
+concurrency:
+  group: browser-acceptance-${{ github.ref }}
+  cancel-in-progress: true
 jobs:
   chromium:
     # Pin to a Playwright-supported image; ubuntu-latest moved to 26.04,
