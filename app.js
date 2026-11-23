@@ -18,7 +18,7 @@ const ring=await response.json();
 if(!ring||ring.version!==1||!ring.keys||typeof ring.keys!=="object")return{ok:0,msg:"The public licence keyring is invalid."};
 const payloadBytes=b64(parts[0]),d=JSON.parse(new TextDecoder().decode(payloadBytes));
 let jwk=null;
-if(d&&d.v===2&&typeof d.kid==="string"&&d.kid&&typeof d.licenceId==="string"&&d.licenceId&&typeof d.school==="string"&&d.school.trim()&&typeof d.exp==="string"&&/^\\d{4}-\\d{2}-\\d{2}$/.test(d.exp)){
+if(d&&d.v===2&&typeof d.kid==="string"&&d.kid&&typeof d.licenceId==="string"&&d.licenceId&&typeof d.school==="string"&&d.school.trim()&&typeof d.exp==="string"&&/^\d{4}-\d{2}-\d{2}$/.test(d.exp)){
 jwk=ring.keys[d.kid];
 }else if(d&&typeof d.school==="string"&&typeof d.exp==="string"&&ring.legacyKey){
 jwk=ring.legacyKey;
