@@ -3,7 +3,7 @@ on:
   push:
     branches: [improve/ss1-nerdc-alignment, security/licence-keyring-rotation]
   pull_request:
-    branches: [main]
+    branches: [main, improve/ss1-nerdc-alignment]
   workflow_dispatch:
 permissions:
   contents: read
