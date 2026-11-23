@@ -223,7 +223,7 @@ Each lesson should include, as appropriate:
 
 ## Implementation status
 
-**First-pass content authoring is complete on the improvement branch for the six reference lessons and the remaining revised SS1 competency areas listed in the mapping table.** The existing 70-topic map and app navigation are preserved. The service-worker cache identifier has been advanced from `emac-v1` to `emac-v2` so installed copies can fetch the revised lesson data.
+**First-pass content authoring is complete on the improvement branch for the six reference lessons and the remaining revised SS1 competency areas listed in the mapping table.** The existing 70-topic map and app navigation are preserved. The service-worker cache identifier has been advanced from `emac-v1` to `emac-v3` so installed copies can fetch the revised lesson data and subsequent progress-reporting code changes.
 
 This does not mean the SS1 release is complete. Teacher review and browser-level testing remain open.
 
