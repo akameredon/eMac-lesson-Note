@@ -38,6 +38,10 @@ The SS1 content branch previously documented a 16/16 Playwright desktop/mobile p
 
 The Garden UI branch previously passed JavaScript syntax and source-readback checks, but its hosted browser acceptance was outstanding. A Vercel preview request was blocked by the free daily deployment allowance; no production deployment was attempted.
 
+## Contributor and maintenance handover
+
+See the [contributor handbook](docs/CONTRIBUTOR-HANDBOOK.md) for repository architecture, local setup, branch/PR rules, lesson authoring, licensing and secret handling, review evidence, release controls and contributor contract handover.
+
 ## Release register
 
 All remaining release, customer-readiness and contributor-handover work is tracked in the single [eMac v1 definitive release completion register](https://github.com/akameredon/eMac-lesson-Note/issues/3). Update that register with evidence rather than creating duplicate plans.
