@@ -74,4 +74,4 @@ The utility checks the active keypair match and creates a unique licence ID. Ver
 - [ ] School-by-school reissue and activation are reconciled.
 - [ ] Owner separately approves merge to `main` and production deployment.
 
-**Current gate:** implementation is being prepared on an isolated branch. No production key exists yet, no school inventory has been confirmed, and no school reissue has taken place.
+**Current gate:** implementation is on an isolated draft pull request. The four local key-utility safety tests passed in a temporary Node 22.16.0 sandbox; GitHub CI/browser acceptance and independent review remain pending. No production key exists yet, no school inventory has been confirmed, and no school reissue has taken place.
