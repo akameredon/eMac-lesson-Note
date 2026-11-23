@@ -125,7 +125,7 @@ c:["Identified the main visible computer parts","Classified devices correctly an
 }}; 
 C["ss1-1-6"]={
 n:[
-["What is software?","Software is a set of programs and instructions that tells a computer or digital device what to do. Hardware is the physical equipment; software gives the equipment instructions. A computer needs both to perform useful tasks."],
+["Software","Software is a set of programs and instructions that tells a computer or digital device what to do. Hardware is the physical equipment; software gives the equipment instructions. A computer needs both to perform useful tasks."],
 ["System software","System software manages the computer and provides a platform for other programs. An operating system is a major example. Windows, macOS, Linux, Android and iOS are operating systems. They help manage files, memory, devices, applications and the user interface."],
 ["Application software","Application software helps a user complete a task. Examples include word processors for writing, spreadsheets for calculations, presentation tools for slides, web browsers for viewing websites, media players and drawing applications. A mobile banking app is also application software."],
 ["Utility software and firmware","Utility software helps maintain, protect or manage a device. Examples include backup tools, storage-management tools and security software. Firmware is software stored in a device that helps control its basic operation, such as the built-in instructions in a router."],
