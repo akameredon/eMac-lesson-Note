@@ -2,8 +2,8 @@ const { test, expect } = require("@playwright/test");
 const { webcrypto } = require("node:crypto");
 const RUBRIC_LESSONS = ["ss1-1-2","ss1-1-4","ss1-1-6","ss1-1-8","ss1-1-9","ss1-2-1","ss1-2-2","ss1-2-6","ss1-2-8","ss1-3-2","ss1-3-3","ss1-3-4","ss1-3-8","ss1-3-9","ss1-3-10"];
 const b64url = bytes => Buffer.from(bytes).toString("base64url");
-async function makeTestLicense() {
-  const payloadBytes = Buffer.from(JSON.stringify({v:2,kid:"test-key-2026",licenceId:"00000000-0000-4000-8000-000000000001",school:"Browser Acceptance Test School",exp:"2099-12-31"}));
+async function makeTestLicense(options={}) {
+  const payloadBytes = Buffer.from(JSON.stringify({v:2,kid:options.kid||"test-key-2026",licenceId:"00000000-0000-4000-8000-000000000001",school:"Browser Acceptance Test School",exp:options.exp||"2099-12-31"}));
   const payload = b64url(payloadBytes);
   // Ensure the fixture exercises both URL-safe Base64 characters, not just alphanumerics.
   for (let attempt=0;attempt<20;attempt++) {
@@ -150,4 +150,34 @@ test("existing practice and CBT entry points remain reachable",async ({page})=>{
   await page.locator('button[data-a="home"]').first().click();
   await page.locator('button[data-a="cbt"]').click();
   await expect(page.getByRole("heading",{name:"CBT practice"})).toBeVisible();
+});
+
+test("validly signed licence with an unknown key ID is rejected",async ({page})=>{
+  const unknown=await makeTestLicense({kid:"not-in-keyring"});
+  await page.locator('button[data-a="gear"]').click();
+  await page.locator("#lk").fill(unknown.licence);
+  await page.locator('button[data-a="lic"]').click();
+  await expect(page.locator(".lic")).toContainText("unrecognised key");
+});
+test("expired licence is rejected after signature verification",async ({page})=>{
+  const expired=await makeTestLicense({exp:"2000-01-01"});
+  await page.locator('button[data-a="gear"]').click();
+  await page.locator("#lk").fill(expired.licence);
+  await page.locator('button[data-a="lic"]').click();
+  await expect(page.locator(".lic")).toContainText("licence expired on 2000-01-01");
+});
+test("malformed signed payload is rejected",async ({page})=>{
+  const malformed=b64url(Buffer.from(JSON.stringify({v:2,kid:"test-key-2026",licenceId:"missing-school",exp:"2099-12-31"})))+".AA";
+  await page.locator('button[data-a="gear"]').click();
+  await page.locator("#lk").fill(malformed);
+  await page.locator('button[data-a="lic"]').click();
+  await expect(page.locator(".lic")).toContainText("unsupported or malformed format");
+});
+test("missing public keyring fails closed",async ({page})=>{
+  await page.locator('button[data-a="gear"]').click();
+  await page.evaluate(()=>{
+    window.fetch=()=>Promise.resolve(new Response("missing",{status:404}));
+  });
+  await page.locator('button[data-a="lic"]').click();
+  await expect(page.locator(".lic")).toContainText("public keyring is missing");
 });
