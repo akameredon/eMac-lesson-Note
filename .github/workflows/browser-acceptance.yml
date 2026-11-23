@@ -1,7 +1,7 @@
 name: Browser acceptance
 on:
   push:
-    branches: [improve/ss1-nerdc-alignment]
+    branches: [improve/ss1-nerdc-alignment, release/emac-v1-integrated]
   pull_request:
     branches: [main, improve/ss1-nerdc-alignment]
   workflow_dispatch:
