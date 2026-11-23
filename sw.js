@@ -1,4 +1,4 @@
-const V="emac-v10";
+const V="emac-v11-garden-ui";
 const CORE=["./","index.html","styles.css","app.js","data.js","manifest.webmanifest","icon.svg"];
 const OPTIONAL=["icon-192.png","icon-512.png","keys.json"];
 
