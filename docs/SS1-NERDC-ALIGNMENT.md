@@ -326,3 +326,37 @@ This does not mean the SS1 release is complete. Teacher review and browser-level
 - Merge to `main` and deployment: **not authorised and not performed**.
 
 The audit is a prioritised correction register, not a declaration of compliance. Preserve the existing application, six reference lessons, 70-entry curriculum map, topic IDs and navigation while applying approved content corrections on this improvement branch.
+
+
+## Follow-up content corrections — 23 November 2026
+
+Applied to the existing SS1 lesson records on the improvement branch, preserving all 24 topic IDs and the original curriculum map:
+
+- **Software / computational thinking / Python (ss1-1-6):** removed the later appended duplicate block. The original lesson record remains the single source for the topic. Added a complete arithmetic Python example with expected output, a selection example, loop illustration and clearer debugging/testing guidance.
+- **Number systems (ss1-1-3):** added worked decimal-to-octal and decimal-to-hexadecimal conversions with place-value checks. Replaced the practical's assumed converter dependency with paper-based repeated-division exercises.
+- **Data representation (ss1-1-10):** added worked pixel-count/24-bit image-size and mono-audio sample-rate/bit-depth examples. File overhead is explicitly excluded from the simple size calculations.
+- **Web development (ss1-2-2):** added a complete small HTML page and linked CSS example, including mobile viewport metadata and a placeholder link that must be replaced with a teacher-approved destination or removed.
+- **Data collection and spreadsheets (ss1-3-2):** added a small fictional dataset and a chart-building example.
+- **Data interpretation (ss1-3-3):** added the even-sized median example and spreadsheet formulas for mean, median, mode and range, with a note that function names can vary.
+- **Database management (ss1-3-6, ss1-3-8):** added examples of relational DBMS and NoSQL software, distinguished a database from a DBMS, and clarified that a spreadsheet/paper fallback is a preparation simulation—not a completed relational DBMS practical.
+
+### Verification of this correction pass
+
+- The duplicate appended Software/Python extension block is absent.
+- The ss1-1-6 lesson has one main assignment and retains its original lesson ID.
+- All 24 existing SS1 topic records remain present.
+- Targeted content-presence checks confirm the new Python, number-system, data-representation, HTML/CSS, spreadsheet and DBMS examples are present.
+- The number-system practical no longer depends on an assumed built-in converter.
+- No curriculum-map or navigation changes were made.
+
+These checks establish source-level content presence and preservation only. A JavaScript runtime parse/build, browser interaction test, learner-facing rendering check, accessibility test, qualified-teacher review and official-PDF comparison have not been performed as part of this correction pass. The added code examples must still be run in a teacher-approved environment before they are treated as classroom-tested.
+
+### Remaining priority queue
+
+1. Review hardware/OS/history explanations and add source-backed worked examples where needed.
+2. Strengthen the remaining practical outcomes and performance rubrics, especially network build/troubleshooting, AI classifier testing, robotics assembly and digital-story production.
+3. Reduce overlap across online safety, cybersecurity, privacy and social-media lessons while preserving each outcome.
+4. Complete the independent teacher review and line-by-line comparison against the full official NERDC PDF.
+5. Complete real-device, accessibility, installation, service-worker upgrade and offline acceptance tests.
+
+**Status:** content corrections applied for the first high-priority gaps; the overall lesson-quality review remains open. No compliance certificate, merge or deployment is implied.
