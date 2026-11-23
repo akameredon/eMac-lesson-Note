@@ -1,7 +1,7 @@
 name: Browser acceptance
 on:
   push:
-    branches: [improve/ss1-nerdc-alignment]
+    branches: [improve/ss1-nerdc-alignment, security/licence-keyring-rotation]
   pull_request:
     branches: [main]
   workflow_dispatch:
@@ -25,6 +25,7 @@ jobs:
         with:
           python-version: "3.x"
       - run: npm install
+      - run: npm test
       - run: npx playwright install --with-deps chromium
       - run: npm run test:browser
       - name: Upload failure evidence
