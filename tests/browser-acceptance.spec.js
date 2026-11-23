@@ -60,7 +60,7 @@ test("all 24 SS1 lesson records contain notes, practice and practical activities
     await expect(page.locator(".card ol li").first(),key+" practical steps").toBeVisible();
     await expect(page.locator(".ck input[type='checkbox']").first(),key+" assessment checklist").toBeVisible();
     if(key==="ss1-2-10") await expect(page.getByText(/teacher-managed, school-approved demonstration account/)).toBeVisible();
-    if(key==="ss1-3-8") await expect(page.getByText(/three related tables/)).toBeVisible();
+    if(key==="ss1-3-8") await expect(page.getByText(/three related tables/).first()).toBeVisible();
     if(key==="ss1-2-1") await expect(page.getByText(/ping command/)).toBeVisible();
     if(key==="ss1-2-8") await expect(page.getByText(/location-permission control/)).toBeVisible();
     if(key==="ss1-2-9") await expect(page.getByText(/school email demonstration/)).toBeVisible();
