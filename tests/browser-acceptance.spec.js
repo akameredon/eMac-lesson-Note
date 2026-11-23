@@ -3,12 +3,13 @@ const { webcrypto } = require("node:crypto");
 const RUBRIC_LESSONS = ["ss1-1-2","ss1-1-4","ss1-1-6","ss1-1-8","ss1-1-9","ss1-2-1","ss1-2-2","ss1-2-6","ss1-2-8","ss1-3-2","ss1-3-3","ss1-3-4","ss1-3-8","ss1-3-9","ss1-3-10"];
 const b64url = bytes => Buffer.from(bytes).toString("base64url");
 async function makeTestLicense() {
-  const payload = b64url(Buffer.from(JSON.stringify({school:"Browser Acceptance Test School",exp:"2099-12-31"})));
+  const payloadBytes = Buffer.from(JSON.stringify({school:"Browser Acceptance Test School",exp:"2099-12-31"}));
+  const payload = b64url(payloadBytes);
   // Ensure the fixture exercises both URL-safe Base64 characters, not just alphanumerics.
   for (let attempt=0;attempt<20;attempt++) {
     const pair = await webcrypto.subtle.generateKey({name:"ECDSA",namedCurve:"P-256"},true,["sign","verify"]);
     const pub = await webcrypto.subtle.exportKey("jwk",pair.publicKey);
-    const signature = await webcrypto.subtle.sign({name:"ECDSA",hash:"SHA-256"},pair.privateKey,Buffer.from(payload));
+    const signature = await webcrypto.subtle.sign({name:"ECDSA",hash:"SHA-256"},pair.privateKey,payloadBytes);
     const encoded = b64url(signature);
     if ((payload+encoded).includes("-") && (payload+encoded).includes("_")) return {pub,licence:payload+"."+encoded};
   }
