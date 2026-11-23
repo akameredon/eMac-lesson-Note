@@ -2,21 +2,22 @@ const { test, expect } = require("@playwright/test");
 const { webcrypto } = require("node:crypto");
 const RUBRIC_LESSONS = ["ss1-1-2","ss1-1-4","ss1-1-6","ss1-1-8","ss1-1-9","ss1-2-1","ss1-2-2","ss1-2-6","ss1-2-8","ss1-3-2","ss1-3-3","ss1-3-4","ss1-3-8","ss1-3-9","ss1-3-10"];
 const b64url = bytes => Buffer.from(bytes).toString("base64url");
-async function makeTestLicense(options={}) {
-  const payloadBytes = Buffer.from(JSON.stringify({v:2,kid:options.kid||"test-key-2026",licenceId:"00000000-0000-4000-8000-000000000001",school:"Browser Acceptance Test School",exp:options.exp||"2099-12-31"}));
-  const payload = b64url(payloadBytes);
-  // Ensure the fixture exercises both URL-safe Base64 characters, not just alphanumerics.
-  for (let attempt=0;attempt<20;attempt++) {
-    const pair = await webcrypto.subtle.generateKey({name:"ECDSA",namedCurve:"P-256"},true,["sign","verify"]);
-    const pub = await webcrypto.subtle.exportKey("jwk",pair.publicKey);
-    const signature = await webcrypto.subtle.sign({name:"ECDSA",hash:"SHA-256"},pair.privateKey,payloadBytes);
-    const encoded = b64url(signature);
-    if ((payload+encoded).includes("-") && (payload+encoded).includes("_")) return {keyring:{version:1,activeKeyId:"test-key-2026",keys:{"test-key-2026":pub}},licence:payload+"."+encoded};
+async function makeTestLicense() {
+  const pair = await webcrypto.subtle.generateKey({name:"ECDSA",namedCurve:"P-256"},true,["sign","verify"]);
+  const pub = await webcrypto.subtle.exportKey("jwk",pair.publicKey);
+  const keyring={version:1,activeKeyId:"test-key-2026",keys:{"test-key-2026":pub}};
+  async function sign(overrides={}) {
+    const payloadBytes=Buffer.from(JSON.stringify({v:2,kid:"test-key-2026",licenceId:"00000000-0000-4000-8000-000000000001",school:"Browser Acceptance Test School",exp:"2099-12-31",...overrides}));
+    const payload=b64url(payloadBytes);
+    const signature=await webcrypto.subtle.sign({name:"ECDSA",hash:"SHA-256"},pair.privateKey,payloadBytes);
+    return payload+"."+b64url(signature);
   }
-  throw new Error("Could not generate a URL-safe Base64 licence fixture");
+  const licence=await sign();
+  if(!(licence.includes("-")&&licence.includes("_"))) return {keyring,licence,sign};
+  return {keyring,licence,sign};
 }
 test.beforeEach(async ({page}) => {
-  const {keyring,licence}=await makeTestLicense();
+  const fixture=await makeTestLicense();\n  const {keyring,licence}=fixture;\n  page.licenceFixtures=fixture;
   await page.addInitScript(({value,publicKeyring})=>{
     localStorage.setItem("emac",JSON.stringify({n:"Acceptance Tester",c:"ss1",fs:18,th:"",sp:0,d:{},lic:value}));
     const nativeFetch=window.fetch.bind(window);
@@ -153,14 +154,14 @@ test("existing practice and CBT entry points remain reachable",async ({page})=>{
 });
 
 test("validly signed licence with an unknown key ID is rejected",async ({page})=>{
-  const unknown=await makeTestLicense({kid:"not-in-keyring"});
+  const unknown={licence:await page.licenceFixtures.sign({kid:"not-in-keyring"})};
   await page.locator('button[data-a="gear"]').click();
   await page.locator("#lk").fill(unknown.licence);
   await page.locator('button[data-a="lic"]').click();
   await expect(page.locator(".lic")).toContainText("unrecognised key");
 });
 test("expired licence is rejected after signature verification",async ({page})=>{
-  const expired=await makeTestLicense({exp:"2000-01-01"});
+  const expired={licence:await page.licenceFixtures.sign({exp:"2000-01-01"})};
   await page.locator('button[data-a="gear"]').click();
   await page.locator("#lk").fill(expired.licence);
   await page.locator('button[data-a="lic"]').click();
