@@ -8,11 +8,30 @@ meta=k=>{const[c,t,w]=k.split("-");return CUR[c][t].find(x=>x[0]==w)},
 can=k=>L.ok||(C[k]&&C[k].free),
 view=h=>{clearInterval(tm);A.innerHTML=h;const f=A.querySelector("h1");f&&(f.tabIndex=-1,f.focus());scrollTo(0,0)};
 function apply(){const r=document.documentElement;r.style.fontSize=S.fs+"px";S.th?r.dataset.theme=S.th:delete r.dataset.theme;r.dataset.sp=S.sp}
-async function chk(k){try{const[p,s]=k.trim().split("."),response=await fetch("pub.json");if(!response.ok)return{ok:0,msg:"Licence verification is not configured: the public key file is missing."};const pub=await response.json(),key=await crypto.subtle.importKey("jwk",pub,{name:"ECDSA",namedCurve:"P-256"},false,["verify"]);
-if(!await crypto.subtle.verify({name:"ECDSA",hash:"SHA-256"},key,b64(s),b64(p)))return{ok:0,msg:"That licence key is not valid."};
-const d=JSON.parse(new TextDecoder().decode(b64(p)));
-if(new Date(d.exp+"T23:59:59")<new Date())return{ok:0,msg:d.school+": licence expired on "+d.exp+". Ask for a renewal key."};
-return{ok:1,msg:d.school+" · licensed until "+d.exp}}catch(e){return{ok:0,msg:"Could not check the key."}}}
+async function chk(k){
+try{
+const parts=String(k||"").trim().split(".");
+if(parts.length!==2||!parts[0]||!parts[1])return{ok:0,msg:"Enter a complete school licence key."};
+const response=await fetch("keys.json",{cache:"no-store"});
+if(!response.ok)return{ok:0,msg:"Licence verification is not configured: the public keyring is missing."};
+const ring=await response.json();
+if(!ring||ring.version!==1||!ring.keys||typeof ring.keys!=="object")return{ok:0,msg:"The public licence keyring is invalid."};
+const payloadBytes=b64(parts[0]),d=JSON.parse(new TextDecoder().decode(payloadBytes));
+let jwk=null;
+if(d&&d.v===2&&typeof d.kid==="string"&&d.kid&&typeof d.licenceId==="string"&&d.licenceId&&typeof d.school==="string"&&d.school.trim()&&typeof d.exp==="string"&&/^\d{4}-\d{2}-\d{2}$/.test(d.exp)){
+jwk=ring.keys[d.kid];
+}else if(d&&typeof d.school==="string"&&typeof d.exp==="string"&&ring.legacyKey){
+jwk=ring.legacyKey;
+}else return{ok:0,msg:"The licence key has an unsupported or malformed format."};
+if(!jwk)return{ok:0,msg:"This licence was issued with an unrecognised key. Contact the school licence administrator."};
+const key=await crypto.subtle.importKey("jwk",jwk,{name:"ECDSA",namedCurve:"P-256"},false,["verify"]);
+if(!await crypto.subtle.verify({name:"ECDSA",hash:"SHA-256"},key,b64(parts[1]),payloadBytes))return{ok:0,msg:"That licence key is not valid."};
+const expiry=new Date(d.exp+"T23:59:59.999Z");
+if(Number.isNaN(expiry.getTime())||expiry.toISOString().slice(0,10)!==d.exp)return{ok:0,msg:"The licence expiry date is invalid."};
+if(expiry<new Date())return{ok:0,msg:d.school+": licence expired on "+d.exp+". Ask for a renewal key."};
+return{ok:1,msg:d.school+" · licensed until "+d.exp};
+}catch(e){return{ok:0,msg:"Could not verify this licence. Check the key and try again."}}
+}
 function home(){view(`<h1>Digital Technologies</h1><p class="lic">${esc(L.msg)}</p><div class="row">${Object.keys(T).map(c=>`<button data-a="cls" data-v="${c}" aria-pressed="${S.c==c}">${T[c]}</button>`).join("")}<button data-a="cbt">⏱ CBT practice</button><button data-a="teach">Teacher view</button></div>${[1,2,3].map(t=>`<h2>Term ${t}</h2><ul class="ls">${CUR[S.c][t].map(([w,n,b])=>{const k=`${S.c}-${t}-${w}`;return`<li><button class="lb" data-a="topic" data-k="${k}"><b>${can(k)?"":"🔒 "}Week ${w}: ${esc(n)}</b><small>${esc(b)}</small></button></li>`}).join("")}</ul>`).join("")}`)}
 const qh=(q,i)=>`<div class="q"><span class="tag">${q.t}</span><p><b>${esc(q.q)}</b></p>${q.o?q.o.map((o,j)=>`<button class="opt" data-a="ans" data-i="${i}" data-j="${j}">${esc(o)}</button>`).join("")+'<p class="fb" role="status"></p>':`<details><summary>Show model answer</summary><p>${esc(q.e)}</p></details>`}</div>`,
 tool=()=>'<div class="tool"><h3>Number converter</h3><input id="num" type="number" min="0" inputmode="numeric" aria-label="Decimal number"> <button data-a="conv">Convert</button><p id="out" role="status"></p></div>';
