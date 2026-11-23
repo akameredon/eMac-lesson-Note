@@ -190,7 +190,33 @@ This preserves existing topic IDs and the existing `n`, `q`, and `p` data shape 
 
 The six reference lesson titles are retained in the lesson notes. Hardware, input/output and storage are grouped under the existing Computer Hardware topic because the current app's topic model has no separate topic IDs for those sublessons. The remaining revised SS1 competency areas listed in the coverage matrix now have authored first-pass content in existing topic slots. The old 70-entry outline should still be treated as legacy planning material until each entry is checked against the revised curriculum—not silently assumed to be compliant.
 
-**Automated content validation on the improvement branch:** all 70 existing curriculum-map entries remain present; all 24 SS1 topic records contain lesson content; the six reference lesson titles are present; each of the 24 SS1 topic records contains notes, questions, practical steps and marking checklist items; multiple-choice answer indexes and model-answer fields pass structural checks. The app JavaScript parses successfully. These are code/data checks, not a substitute for teacher review or browser testing.
+**Automated content validation on the improvement branch:** all 70 existing curriculum-map entries remain present; all 24 SS1 topic records contain lesson content; the six reference lesson titles are present; all 24 SS1 records contain a practical block; the current content contains 203 note sections, 133 practice-question records, 116 guided practical steps and 126 checklist criteria; multiple-choice answer indexes and model-answer fields pass structural checks. The app JavaScript parses successfully. These are code/data checks, not a substitute for teacher review or browser testing.
+
+
+## Lesson-quality review — first corrective pass (23 November 2026)
+
+The full 23-entry secondary transcription was reviewed against the current SS1 lesson records as a working comparison source. This was an authoring audit, not a formal teacher sign-off or direct verification of every line in the official NERDC PDF.
+
+The following gaps were identified and corrected without changing topic IDs, the 70-entry curriculum map, application routes or lesson data shape:
+
+- **Computational thinking and Python (`ss1-1-6`):** the earlier lesson described software generally and did not teach the focal competence in enough detail. Added decomposition, pattern recognition, abstraction, algorithm design, IPO charts, flowcharts, pseudocode, variables, expressions, sequence, selection, iteration, debugging/error types, practice questions and a guided problem-solving activity with a paper-trace alternative.
+- **Digital entrepreneurship (`ss1-3-4`):** the lesson explained digital stories using narration and sound, but the practical did not require learners to produce audio. Added a spoken narration/audio task, source/permission checks and a text alternative for accessibility.
+- **Communication systems (`ss1-2-1`):** clarified the practical requirement to build a small demonstration LAN using two devices and a teacher-approved switch, check connectivity and record results. A labelled paper simulation remains available when equipment or permission is unavailable.
+- **Online safety (`ss1-2-6`):** expanded the lesson to explicitly include a digital citizenship pledge, safe social-media/class-group practice using a fictional profile or teacher-managed demonstration, and safe tagging with permission and audience checks.
+
+### Practical delivery limits still to resolve
+
+- **Robotics:** the lesson explains and simulates a two-wheel differential-drive robot and includes a supervised kit demonstration/build pathway. A physical obstacle-avoidance robot cannot be completed in software alone; schools need a suitable kit, safe workspace and teacher supervision. Where unavailable, the paper design/grid simulation is a preparation alternative, not evidence that a physical robot was built.
+- **AI:** online image-classifier training depends on an approved tool and internet access. The paper classification activity is a fallback for understanding the stages, not a substitute for demonstrating a trained digital model when equipment is available.
+- **Python, LAN and media production:** the lesson notes now specify real practicals and safe alternatives. A school still needs to confirm access to a Python environment, suitable network equipment and an audio-capable presentation tool to assess the hands-on outcomes fully.
+
+### Acceptance status
+
+- Content authoring and structural checks: passed for this branch's current data shape.
+- First corrective lesson-quality pass: completed for the gaps listed above.
+- Teacher review of all learning outcomes, explanations, worked examples, questions, answers and marking criteria: **not yet completed**.
+- Direct line-by-line verification against the complete official October 2025 NERDC PDF: **not yet completed**. The public transcription is a comparison aid only.
+- Browser/mobile interaction, accessibility, fresh install and service-worker upgrade/offline tests: **not yet completed**.
 
 ## Content quality standard for every completed lesson
 
