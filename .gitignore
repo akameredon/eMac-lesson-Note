@@ -1,0 +1,7 @@
+# Local secrets and generated files
+private.pem
+*.pem
+.env
+.env.*
+node_modules/
+.DS_Store
