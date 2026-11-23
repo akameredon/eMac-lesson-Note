@@ -31,6 +31,7 @@ test("all 24 SS1 lesson records contain notes, practice and practical activities
     await page.locator('button[data-a="home"]').first().click().catch(()=>{});
     await page.locator('button[data-a="topic"][data-k="'+key+'"]').click();
     await expect(page.locator(".card h3").first(),key+" notes").toBeVisible();
+    if(key==="ss1-1-6") await expect(page.getByRole("heading",{name:"Sequence, selection and iteration"})).toBeVisible();
     await page.locator('button[data-a="tab"][data-v="q"]').click();
     await expect(page.locator(".q").first(),key+" practice questions").toBeVisible();
     await page.locator('button[data-a="tab"][data-v="p"]').click();
