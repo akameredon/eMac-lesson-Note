@@ -1,5 +1,5 @@
 const $=s=>document.querySelector(s),A=$("#app"),T={ss1:"SS1",ss2:"SS2",ss3:"SS3"},BK='<button data-a="home">⌂ All topics</button>';
-let S={n:"",c:"ss1",fs:18,th:"",sp:0,d:{},done:[],best:0,lic:""},L={ok:0,msg:"No licence key yet. Demo topics are open."},cur={},tm;
+let S={n:"",c:"ss1",term:1,fs:18,th:"",sp:0,d:{},done:[],best:0,lic:""},L={ok:0,msg:"No licence key yet. Demo topics are open."},cur={},tm;
 try{Object.assign(S,JSON.parse(localStorage.getItem("emac")||"{}"))}catch(e){}\nS.d=S.d||{};S.done=Array.isArray(S.done)?S.done:[];S.best=Number(S.best)||0;
 const sv=()=>{try{localStorage.setItem("emac",JSON.stringify(S))}catch(e){}},
 esc=s=>String(s).replace(/[&<>"]/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;"}[c])),
