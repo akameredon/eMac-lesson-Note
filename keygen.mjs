@@ -30,7 +30,7 @@ function init() {
   // Private material is created only on this machine with owner-only file permissions.
   fs.writeFileSync(PRIVATE_FILE, privateKey.export({type:"pkcs8",format:"pem"}), {flag:"wx",mode:0o600});
   try {
-    fs.writeFileSync(PUBLIC_FILE, JSON.stringify(ring,null,2)+"\\n", {flag:"wx",mode:0o644});
+    fs.writeFileSync(PUBLIC_FILE, JSON.stringify(ring,null,2)+"\n", {flag:"wx",mode:0o644});
   } catch (error) {
     fs.rmSync(PRIVATE_FILE,{force:true});
     throw error;
@@ -42,7 +42,7 @@ function init() {
   console.log("No school licences have been issued.");
 }
 function issue() {
-  if (!school?.trim() || !/^\\d{4}-\\d{2}-\\d{2}$/.test(expiry || "")) throw new Error('Usage: node keygen.mjs issue "School Name" YYYY-MM-DD');
+  if (!school?.trim() || !/^\d{4}-\d{2}-\d{2}$/.test(expiry || "")) throw new Error('Usage: node keygen.mjs issue "School Name" YYYY-MM-DD');
   const date = new Date(expiry+"T00:00:00.000Z");
   if (Number.isNaN(date.getTime()) || date.toISOString().slice(0,10)!==expiry) throw new Error("Expiry must be a real calendar date in YYYY-MM-DD format.");
   const ring = readRing();
