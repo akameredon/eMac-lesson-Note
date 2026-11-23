@@ -408,3 +408,205 @@ C["ss1-1-6"].p.c.push(
 "Distinguished sequence, selection and iteration",
 "Identified and corrected a syntax or logic error"
 );
+
+/* Additional SS1 lesson coverage: completes the existing 24-topic SS1 map. */
+C["ss1-1-2"]={
+n:[
+["Learning goals","By the end of this lesson, you should be able to describe important stages in the development of digital technologies, compare early and modern computers and explain how changes in size, speed, storage and connectivity affect everyday life."],
+["Early ways of counting","People used fingers, stones, tally marks and counting boards to keep records. The abacus is an example of a manual calculating aid. These tools helped people calculate before electronic computers existed."],
+["Mechanical calculating machines","Later inventors developed machines with moving parts to perform calculations. Mechanical calculators showed that some steps in arithmetic could be carried out by a machine."],
+["From electronic computers to personal computers","Early electronic computers used large components and occupied much space. Over time, smaller electronic components made computers faster, more reliable and more affordable. Computers became available in offices, schools and homes."],
+["Microprocessors and mobile devices","A microprocessor places the main processing functions of a computer on a small chip. This helped make personal computers, phones, tablets and many embedded devices possible."],
+["The internet and connected systems","Computer networks allow devices to exchange information. The internet connects many networks around the world and supports services such as websites, email, online learning and communication."],
+["Modern digital technologies","Modern systems include cloud services, artificial intelligence, robotics, sensors and connected devices. They can support farming, health, transport, education and business, but users must consider safety, privacy and reliability."],
+["A balanced view of progress","New technology can improve speed and access, but it can also create challenges such as electronic waste, unequal access, misinformation and cyber risks. Technology should be selected to solve a real need."]
+],
+q:[
+{t:"NERDC practice",q:"Which tool is an example of an early manual calculating aid?",o:["Abacus","Smartphone","Cloud server","Laser printer"],a:0,e:"An abacus uses movable counters to help people calculate."},
+{t:"NERDC practice",q:"What helped make personal computers smaller and more affordable?",o:["Smaller electronic components and microprocessors","Replacing software with paper","Removing all storage","Using only mechanical gears"],a:0,e:"Advances in electronic components and microprocessors reduced size and cost while improving capability."},
+{t:"NERDC practice",q:"Which development made it possible for computers in different places to exchange information?",o:["Computer networking","A larger keyboard","A paper filing cabinet","A louder speaker"],a:0,e:"Networks connect devices so they can communicate and share information."},
+{t:"WAEC-style practice",q:"State two ways modern computers differ from many early electronic computers.",e:"Modern computers are generally much smaller, faster, more energy-efficient, more affordable and have greater storage and connectivity."},
+{t:"NERDC practice",q:"Give one benefit and one challenge of modern digital technology.",e:"A benefit may be faster communication or easier access to learning. A challenge may be privacy risk, misinformation, unequal access or electronic waste."}
+],
+p:{s:["Arrange these developments in a sensible historical order: connected mobile devices, mechanical calculators, early electronic computers, manual counting aids.","Create a simple timeline with at least four stages. Add one feature to each stage.","Choose one modern digital service used in your community. Explain which earlier development helped make it possible.","Discuss one benefit and one challenge of that service."],c:["Placed the stages in a sensible order","Included at least four timeline stages","Explained a link between past and present technology","Identified a realistic benefit","Identified a realistic challenge"]}
+};
+C["ss1-1-8"]={
+n:[
+["Learning goals","You should be able to explain what an operating system does, identify common operating systems, describe basic file and window management and practise safe ways to sign in and shut down a computer."],
+["Meaning of an operating system","An operating system (OS) is system software that manages a computer's hardware and provides services that applications use. It helps the user and programs work with the device."],
+["Managing hardware and resources","The OS helps manage the processor, memory, storage and connected devices. It shares resources among programs and helps the computer respond to user actions."],
+["User interface","A user interface allows a person to interact with a computer. It may use windows, icons, menus and a pointer, or text commands. Touchscreens also provide a way to interact."],
+["Files and folders","An operating system helps users create, name, move, copy, organise and delete files and folders. Clear names and folders make information easier to find."],
+["Running applications","The OS starts and manages applications. It helps programs use memory and other resources and provides common services such as printing and saving files."],
+["Examples of operating systems","Examples include Microsoft Windows, macOS, GNU/Linux distributions, Android and iOS. Different devices use different operating systems; not every OS is designed for every device."],
+["Safe use and updates","Use your own authorised account, sign out when finished on a shared device and install updates through trusted settings. Do not interrupt a device while an important update is being installed."]
+],
+q:[
+{t:"NERDC practice",q:"Which statement best describes an operating system?",o:["System software that manages hardware and supports applications","A document created in a word processor","A device used only to print","A website address"],a:0,e:"An OS manages device resources and provides services for applications."},
+{t:"NERDC practice",q:"Which task is normally handled through an operating system?",o:["Creating and organising folders","Growing a plant","Repairing a broken wall","Printing without any software"],a:0,e:"File and folder management is a normal operating-system task."},
+{t:"NERDC practice",q:"Which is an example of a mobile operating system?",o:["Android","HDMI","Spreadsheet","Ethernet cable"],a:0,e:"Android is an operating system used by many mobile devices."},
+{t:"WAEC-style practice",q:"State three functions of an operating system.",e:"Any three: managing memory and processor time, managing files, providing a user interface, managing devices, running applications and helping protect accounts."},
+{t:"NERDC practice",q:"Why should you sign out of your account on a shared school computer?",o:["To reduce the chance that another person accesses your account","To make the screen brighter","To increase the keyboard size","To delete the operating system"],a:0,e:"Signing out helps protect your files and account from unauthorised access."}
+],
+p:{s:["On a school computer or teacher-provided screenshots, identify the operating system and the main parts of its interface.","Create a folder named Digital Technologies and two clearly named subfolders inside it.","Create or use a teacher-provided practice file, save it in the correct folder and rename a copy.","Demonstrate the correct sign-out or shutdown method for the device. Do not force power off during updates."],c:["Identified the operating system or interface elements","Created folders with clear names","Saved and renamed a practice file correctly","Used a safe sign-out or shutdown method","Did not access another learner's account"]}
+};
+C["ss1-1-9"]={
+n:[
+["Learning goals","You should be able to explain why computers need maintenance, identify safe cleaning and care practices, recognise common maintenance problems and describe basic health and electrical safety."],
+["Why maintenance matters","Computer maintenance helps devices work reliably, reduces avoidable faults and protects information. Careful use can also extend the useful life of equipment."],
+["Preventive maintenance","Preventive maintenance means taking care of equipment before it fails. Examples include keeping devices clean and dry, providing ventilation, using suitable power protection and installing trusted updates."],
+["Physical care","Keep food and liquids away from computers. Use clean, dry hands. Do not block air vents. Carry laptops carefully and avoid pulling cables by their wires."],
+["Safe cleaning","Shut down and disconnect equipment before external cleaning, following the manufacturer's instructions. Use a soft, suitable cloth. Never spray liquid directly into a device or open a power supply."],
+["Software maintenance","Use trusted updates, remove unwanted applications through approved settings, keep security protection active and back up important files. Avoid unknown downloads and untrusted 'cleaner' programs."],
+["Health and ergonomics","Sit with supported posture, keep the screen at a comfortable height and take regular breaks. Adjust brightness and volume to comfortable levels. Report pain, eye strain or damaged equipment to a teacher."],
+["Electrical and environmental safety","Do not touch exposed wires, damaged plugs or equipment with wet hands. Report faults; do not attempt electrical repairs. Dispose of electronic waste through an approved collection or recycling route."]
+],
+q:[
+{t:"NERDC practice",q:"Which action is an example of preventive maintenance?",o:["Keeping air vents clear","Pouring water on a keyboard","Pulling a cable by its wire","Ignoring a damaged plug"],a:0,e:"Clear vents help prevent overheating."},
+{t:"NERDC practice",q:"What should you do if a computer has a damaged power cable?",o:["Stop using it and report it to a responsible adult or technician","Cover the damage with paper and continue","Touch the exposed wire to test it","Use it with wet hands"],a:0,e:"A damaged cable can cause electric shock or fire. Stop using it and report it."},
+{t:"NERDC practice",q:"Which is a safer way to clean an external computer surface?",o:["Follow device instructions and use a suitable soft cloth after shutdown","Spray water directly into the keyboard","Clean the device while it is connected to power","Open the power supply"],a:0,e:"Follow the manufacturer's guidance, shut down and disconnect first, and never spray liquid into equipment."},
+{t:"WAEC-style practice",q:"State two ways a learner can reduce eye strain when using a computer.",e:"Take regular breaks, use comfortable screen brightness, position the screen appropriately and maintain a comfortable viewing distance."},
+{t:"NERDC practice",q:"Why should electronic waste not be thrown carelessly into ordinary surroundings?",o:["It may contain materials that can harm people and the environment","It improves soil automatically","It is always harmless","It turns into clean drinking water"],a:0,e:"Electronic waste can contain hazardous materials and should be handled through suitable collection or recycling routes."}
+],
+p:{s:["Inspect a switched-off, disconnected practice device externally. Do not open it or touch damaged wiring.","Use a checklist to identify dust, blocked vents, loose external cables or unsafe placement.","Prepare a weekly preventive-maintenance checklist for a school computer room.","Demonstrate a safe sitting position and explain when to take a screen break."],c:["Inspected only safe external parts","Identified at least three care practices","Included power and ventilation safety","Included ergonomic guidance","Explained how to report a fault safely"]}
+};
+C["ss1-1-10"]={
+n:[
+["Learning goals","You should be able to explain how computers represent information, distinguish bits and bytes, describe character encoding and explain how simple digital images and sound are represented."],
+["Bits and bytes","A bit is a binary digit: 0 or 1. A byte is commonly made up of 8 bits. Computers store and process information using patterns of bits."],
+["Binary patterns","A group of bits can represent numbers, letters, colours, sound samples and instructions. The meaning depends on the encoding or format used."],
+["Character encoding","Character encoding assigns numeric codes to characters so they can be stored and exchanged. ASCII represents a limited set of characters. Unicode supports characters from many writing systems and a much wider range of symbols."],
+["Digital images","A raster image is made of tiny picture elements called pixels. Each pixel stores colour information. Image dimensions and colour depth affect the amount of data needed."],
+["Digital sound","A digital audio recording stores measurements of a sound wave taken at regular intervals. These measurements are called samples. Sample rate and bit depth affect sound quality and file size."],
+["File formats and compression","Formats organise data for particular uses. Compression reduces file size. Lossless compression preserves the original data; lossy compression removes some information to reduce size further."],
+["Why representation matters","Understanding data representation helps people choose suitable file formats, estimate storage needs and recognise why files may look or sound different after conversion or compression."]
+],
+q:[
+{t:"NERDC practice",q:"What is a bit?",o:["A binary digit, either 0 or 1","A group of eight folders","A type of printer","A complete webpage"],a:0,e:"A bit is the basic binary digit and has a value of 0 or 1."},
+{t:"NERDC practice",q:"How many bits are in one byte?",o:["8","2","10","100"],a:0,e:"A byte is commonly defined as 8 bits."},
+{t:"NERDC practice",q:"What is the main purpose of character encoding?",o:["To represent characters using numeric codes","To increase monitor brightness","To connect a printer to electricity","To clean a hard drive"],a:0,e:"Character encoding maps characters to numeric values for digital storage and exchange."},
+{t:"NERDC practice",q:"What is a pixel?",o:["A small picture element in a digital image","A type of keyboard key","A sound cable","A folder name"],a:0,e:"A raster image is made up of pixels, each carrying colour information."},
+{t:"WAEC-style practice",q:"State one difference between lossless and lossy compression.",e:"Lossless compression allows the original data to be reconstructed exactly. Lossy compression removes some information, so the original cannot be restored perfectly."}
+],
+p:{s:["Write the binary digits 0 and 1 and explain what a bit represents.","Use a teacher-provided chart to show how groups of eight bits form a byte.","Compare two teacher-provided images with different dimensions or quality. Identify which has more pixels or detail.","Compare two audio file examples or descriptions and explain how sample rate or compression may affect quality and file size."],c:["Defined bit and byte correctly","Explained the role of encoding","Identified pixels in a digital image","Explained digital sound sampling in simple terms","Distinguished lossless from lossy compression"]}
+};
+C["ss1-2-3"]={
+n:[
+["Learning goals","You should be able to identify common forms of online communication, use email fields correctly, write a clear subject and message, explain online meeting etiquette and communicate respectfully."],
+["Online communication","People communicate online through email, instant messaging, discussion forums, voice and video calls, learning platforms and shared documents. Choose a channel that suits the purpose and audience."],
+["Email address and fields","An email message normally has a recipient address and may include a subject, carbon-copy (Cc) recipients and blind-carbon-copy (Bcc) recipients. Use Cc when recipients may see one another; use Bcc when addresses should not be shown to the whole group."],
+["Writing a clear email","Use a useful subject, a respectful greeting, short paragraphs and a clear request or explanation. Check names, attachments and recipient addresses before sending."],
+["Attachments and links","Attach only files needed by the recipient. Check that the file is correct and safe to share. Be cautious with unexpected links and attachments, even when a message appears to come from someone you know."],
+["Instant messaging","Messaging is useful for short exchanges, but messages can be misunderstood. Be polite, avoid sending repeated unwanted messages and do not share another person's private message without permission."],
+["Online meetings","Join using the correct link, use an appropriate display name, mute the microphone when not speaking and take turns. Ask before recording or sharing screenshots."],
+["Digital communication etiquette","Use respectful language, avoid insults and all-capital messages, verify information before forwarding it and remember that written messages may be saved or shared."]
+],
+q:[
+{t:"NERDC practice",q:"Which email field hides recipients' addresses from other recipients?",o:["Bcc","Subject","Attachment","Signature"],a:0,e:"Bcc sends a copy without showing those recipients' addresses to the other recipients."},
+{t:"NERDC practice",q:"What should a clear email subject do?",o:["Briefly describe the purpose of the message","Contain the sender's password","Be left blank every time","Include unrelated jokes"],a:0,e:"A useful subject helps the recipient understand the message before opening it."},
+{t:"NERDC practice",q:"What is a sensible action before opening an unexpected attachment?",o:["Check with the sender through a trusted channel","Open it immediately","Forward it to everyone","Disable all security tools"],a:0,e:"Unexpected attachments may be unsafe. Verify the message through a trusted channel."},
+{t:"NERDC practice",q:"What is good online meeting etiquette?",o:["Mute your microphone when you are not speaking","Interrupt every speaker","Record everyone without permission","Share the meeting link publicly"],a:0,e:"Muting reduces background noise; participants should also take turns and respect privacy."},
+{t:"WAEC-style practice",q:"State three features of a well-written formal email.",e:"A clear subject, respectful greeting, concise message, appropriate closing, correct recipient and checked attachment are acceptable features."}
+],
+p:{s:["Draft an email to a teacher requesting clarification about a fictional class assignment. Use a clear subject, greeting, concise message and closing.","Label the To, Cc and Bcc fields on a sample email screen or diagram.","Review a teacher-provided example message and identify one sign of a suspicious attachment or link.","Role-play an online class meeting using turn-taking and microphone etiquette. Do not record participants."],c:["Used a suitable subject line","Wrote a respectful and clear message","Explained To, Cc and Bcc correctly","Identified a safe response to an unexpected attachment","Demonstrated respectful online meeting behaviour"]}
+};
+C["ss1-2-4"]={
+n:[
+["Learning goals","You should be able to compare local and cloud storage, identify common storage devices, explain synchronisation and backup, and choose a sensible storage method for different tasks."],
+["Why digital storage is needed","Digital devices store files so information can be used later. Files may include documents, photographs, audio, video, applications and schoolwork."],
+["Local storage","Local storage is attached to or built into a device. Examples include internal solid-state drives (SSD), hard disk drives (HDD), memory cards and USB flash drives. A device may still be lost, damaged or infected, so local storage alone is not a complete backup plan."],
+["Cloud storage","Cloud storage keeps files on remote systems accessed through a network. Examples of services include Google Drive, Microsoft OneDrive and iCloud. Availability depends on the provider, account, internet access and service settings."],
+["Synchronisation is not the same as backup","Synchronisation keeps files similar across devices. If an unwanted deletion or change synchronises, it may affect other copies. A separate backup with version history or an offline copy can provide additional protection."],
+["Planning a backup","Choose important files, make copies on suitable storage and check that the copies can be opened. A useful approach is to keep more than one copy and avoid keeping every copy in the same place."],
+["Sharing and permissions","Cloud services may allow viewing, commenting or editing. Give only the access needed. Check the recipient and permission settings before sharing a school file."],
+["Storage choices","Consider capacity, speed, cost, durability, privacy, portability and internet availability. Keep sensitive information only in approved storage locations."]
+],
+q:[
+{t:"NERDC practice",q:"Which is an example of local storage?",o:["USB flash drive","A remote cloud account only","An email address","A web browser tab"],a:0,e:"A USB flash drive is a physical storage device connected directly to a computer."},
+{t:"NERDC practice",q:"What is cloud storage?",o:["Storing files on remote systems accessed through a network","Keeping papers in a cupboard","Saving files only in computer memory while it is on","Printing a document"],a:0,e:"Cloud storage keeps files on remote systems that users access through a network."},
+{t:"NERDC practice",q:"Why is synchronisation not always a complete backup?",o:["An unwanted deletion may synchronise to other devices","It always creates printed copies","It cannot transfer files","It permanently prevents changes"],a:0,e:"Synchronisation can copy changes, including accidental deletions, across devices."},
+{t:"NERDC practice",q:"What should you check before sharing a cloud document?",o:["Who can access it and what permission they have","Only the colour of the screen","Whether the file name is long","Whether every person can edit it"],a:0,e:"Check recipients and use the least access necessary, such as view-only when editing is not needed."},
+{t:"WAEC-style practice",q:"Give two differences between local storage and cloud storage.",e:"Local storage is on or attached to the device and may be available without internet. Cloud storage is on remote systems and usually requires network access; it can make sharing and access across devices easier."}
+],
+p:{s:["Sort teacher-provided examples into local storage and cloud storage.","Choose a suitable storage method for a class presentation, explaining capacity, access and privacy needs.","On a teacher-approved practice account or screenshots, locate the sharing-permission options without uploading personal information.","Create a simple backup plan for a fictional school project and include a step to check that the backup works."],c:["Correctly classified storage examples","Compared local and cloud storage","Explained why sync is not identical to backup","Selected appropriate sharing permissions","Included a backup verification step"]}
+};
+C["ss1-2-8"]={
+n:[
+["Learning goals","You should be able to describe practical ways to protect devices and accounts, explain strong authentication, identify the role of updates and security tools and respond safely to a suspected cyber incident."],
+["Layered protection","Cybersecurity works best when several safeguards are used together. No single tool can prevent every threat. Users, devices, software and networks all need care."],
+["Strong passwords and passphrases","Use long, unique passwords or passphrases for different accounts. Do not share passwords with friends. A password manager may help, when approved and used safely."],
+["Multi-factor authentication","Multi-factor authentication (MFA) asks for another proof of identity in addition to a password, such as an authenticator approval or security key. Never approve a sign-in request you did not start."],
+["Updates and security software","Install operating-system and application updates from trusted settings. Antivirus or endpoint protection can help detect malicious software. A firewall helps control network traffic. Keep these protections enabled as instructed."],
+["Recognising social engineering","Attackers may pretend to be a bank, teacher, delivery service or friend to pressure someone into revealing information or clicking a link. Urgency, threats, prizes and requests for codes are warning signs."],
+["Safe response to an incident","Stop interacting with a suspicious message. Do not forward it as a warning with the dangerous link attached. Tell a trusted adult, teacher or IT support person. Change a compromised password using the official service and review account sessions with help."],
+["Backups and recovery","Keep separate backups of important work and know how to restore them. A backup is useful only if it is current and can be recovered."]
+],
+q:[
+{t:"NERDC practice",q:"Which password practice is safest?",o:["Use a long, unique password for each important account","Use the same short password everywhere","Share your password with classmates","Write your password in a public profile"],a:0,e:"Unique passwords reduce the risk that one exposed password opens several accounts."},
+{t:"NERDC practice",q:"What should you do if you receive an MFA approval request you did not start?",o:["Deny it and report the unexpected request","Approve it quickly","Send the code to the requester","Ignore all future security alerts"],a:0,e:"An unexpected approval request may mean someone is trying to access the account."},
+{t:"NERDC practice",q:"What is the role of a firewall?",o:["Help control network traffic according to security rules","Increase the size of a monitor","Replace every backup","Write school essays"],a:0,e:"A firewall filters network traffic according to defined rules."},
+{t:"NERDC practice",q:"A message says your account will close unless you send a login code immediately. What is the safest response?",o:["Do not share the code; verify through the official service","Reply with the code","Forward the message to friends","Click every link in the message"],a:0,e:"One-time codes are private. Use the official service or support channel to verify an alert."},
+{t:"WAEC-style practice",q:"State three steps a learner should take after suspecting that an account has been compromised.",e:"Stop interacting with the suspicious message, report it to a trusted adult or IT support, change the password through the official service, revoke unknown sessions and enable MFA where available."}
+],
+p:{s:["Examine teacher-created sample passwords and rank them by strength. Do not use or reveal real passwords.","Create a paper checklist for enabling MFA on a fictional account; do not share real verification codes.","Sort sample messages into likely legitimate, suspicious or uncertain. Explain which clues informed each decision.","Write a short incident-report procedure for a learner who clicked a suspicious link."],c:["Explained why passwords should be unique","Described MFA without sharing codes","Identified social-engineering warning signs","Selected a safe reporting response","Included recovery or password-change steps"]}
+};
+C["ss1-2-9"]={
+n:[
+["Learning goals","You should be able to identify personal and sensitive information, explain why privacy matters, describe responsible online behaviour and choose safe actions when information is collected or shared."],
+["Personal information","Personal information is information that can identify or relate to a person. Examples may include a name, photograph, phone number, home address, school details, account identifier or location information."],
+["Sensitive information","Some information needs extra care because misuse could cause harm. Examples can include passwords, financial details, health information and private family information. Never post another person's private details without a valid reason and permission."],
+["Data collection","Apps and websites may request information to provide a service. Before sharing, ask what is needed, why it is needed, who will see it and whether the request is appropriate."],
+["Privacy settings and consent","Review privacy and audience settings. Ask permission before posting another person's image, recording a conversation or sharing a private message. A person should be able to understand what they are agreeing to."],
+["Digital footprint","A digital footprint is the trail of information created by online activity. Posts, comments, images and account activity may be copied or saved. Think before posting and correct mistakes where possible."],
+["Digital ethics and respect","Use technology honestly and respectfully. Do not impersonate others, bully, harass, spread private content or use another person's work without acknowledgement."],
+["Getting help and legal awareness","Report privacy violations, threats or cyberbullying to a trusted adult, school authority or appropriate service. Nigeria has a data-protection framework; learners should follow school guidance and ask a qualified adult for help with legal concerns."]
+],
+q:[
+{t:"NERDC practice",q:"Which item should be treated as private account information?",o:["A one-time login code","A public weather forecast","A general school subject","A public holiday date"],a:0,e:"A one-time login code can give access to an account and must never be shared."},
+{t:"NERDC practice",q:"What should you do before posting a classmate's photograph?",o:["Ask for their permission and follow school rules","Post it without asking","Add their phone number","Tag their home location"],a:0,e:"Respect privacy and obtain permission before sharing another person's image."},
+{t:"NERDC practice",q:"What is a digital footprint?",o:["The trail of information created by online activity","A mark made by a shoe only","A computer's power cable","A type of printer ink"],a:0,e:"Online posts, comments, images and activity can form a digital footprint."},
+{t:"NERDC practice",q:"Which is an example of responsible digital behaviour?",o:["Credit the creator when using their work","Impersonate another learner","Share private messages publicly","Use a classmate's password"],a:0,e:"Acknowledging creators respects their work and supports honest digital practice."},
+{t:"WAEC-style practice",q:"Explain two ways a learner can protect personal privacy online.",e:"Limit information shared publicly, review privacy settings, use strong unique passwords, avoid sharing codes, ask permission before posting others' information and use trusted services."}
+],
+p:{s:["Sort teacher-provided information cards into public, personal and highly private categories. Explain that context matters.","Review a sample social-media profile and identify details that reveal too much personal information.","Rewrite a disrespectful online comment as a respectful response.","Create a short class agreement for asking permission before recording or sharing images and messages."],c:["Identified personal and sensitive information","Explained why context matters","Suggested sensible privacy settings or limits","Demonstrated respectful communication","Included consent and reporting guidance"]}
+};
+C["ss1-2-10"]={
+n:[
+["Learning goals","You should be able to explain how social-media technologies work at a basic level, identify common features, compare benefits and risks and practise responsible content sharing."],
+["Meaning of social media","Social media services allow people and organisations to create, share and interact with content and communities online. They may support text, images, audio, video, live sessions and group discussions."],
+["Common features","Features may include profiles, posts, comments, reactions, direct messages, groups, hashtags, feeds and live broadcasts. The exact features depend on the service."],
+["How feeds are organised","Many services use automated systems to rank or recommend content. A feed may not show every post in time order. Recommendations can be influenced by activity, interests and service settings."],
+["Benefits for learning and work","Social media can support learning communities, public information, creative work, customer service and small-business communication. Information should still be checked before it is trusted or shared."],
+["Risks and misinformation","Risks include scams, cyberbullying, impersonation, harmful content, privacy loss and misleading information. Images and videos can be edited or presented without context."],
+["Responsible publishing","Think about the audience and purpose before posting. Check facts, respect copyright and privacy, ask permission before sharing another person's image and avoid revealing school or home details."],
+["Managing wellbeing","Set sensible time boundaries, take breaks and use blocking or reporting tools when needed. If online activity causes distress or threats, seek help from a trusted adult."]
+],
+q:[
+{t:"NERDC practice",q:"Which is a common social-media feature?",o:["Comments on posts","A computer's power supply","A physical keyboard switch","A printer toner cartridge"],a:0,e:"Comments allow users to respond to content."},
+{t:"NERDC practice",q:"Why might a social-media feed not show every post in time order?",o:["The service may rank or recommend content automatically","The screen cannot display text","All posts are deleted immediately","The internet has no data"],a:0,e:"Many platforms use automated ranking and recommendation systems."},
+{t:"NERDC practice",q:"What should you do before sharing a surprising news claim?",o:["Check it with reliable sources","Share it immediately because it is popular","Remove the source name","Add an invented quotation"],a:0,e:"Check the source and context before sharing claims."},
+{t:"NERDC practice",q:"Which action helps protect privacy when posting a photograph?",o:["Get permission and avoid revealing private location details","Add everyone's phone number","Share the image publicly without asking","Include a password in the caption"],a:0,e:"Permission and careful location sharing reduce privacy risks."},
+{t:"WAEC-style practice",q:"State two benefits and two risks of social media.",e:"Benefits may include communication, learning, community building and business promotion. Risks may include scams, cyberbullying, misinformation and privacy loss."}
+],
+p:{s:["Compare two teacher-selected social-media service descriptions and list their common features.","Design a sample post for a fictional school science club. Do not include real student names, photographs or contact details.","Review a set of sample claims and identify which need verification before sharing.","Prepare a personal checklist for safe and balanced social-media use."],c:["Identified common social-media features","Created a suitable fictional post","Recognised the need to verify claims","Protected personal and other people's information","Included a wellbeing or time-boundary practice"]}
+};
+C["ss1-3-1"]={
+n:[
+["Learning goals","You should be able to explain the purpose of word-processing software, create and save a document, edit and format text, organise a page and use spelling and review tools responsibly."],
+["What is word processing?","Word-processing software is used to create, edit, format, save and print text documents. It is useful for letters, reports, assignments, notices and other written work."],
+["Common features","Features may include typing and editing, text formatting, paragraph alignment, page layout, tables, lists, headers, footers, spell checking, comments and printing."],
+["Creating and saving a document","Start a new document, enter a clear title and content, then save it with a meaningful file name in the correct folder. Save changes regularly and check the file location."],
+["Editing text","Select text before replacing, copying, cutting or deleting it. Use undo when an action is accidental. Review the document after editing to ensure that meaning has not changed."],
+["Formatting text and paragraphs","Use font size, bold, italics and alignment to make information easier to read. Use headings and lists to organise content. Avoid excessive decoration and keep formatting consistent."],
+["Page layout and tables","Page layout settings include margins, orientation and page size. Tables arrange information in rows and columns. Use a table when it makes information clearer than a long paragraph."],
+["Proofreading and responsible use","Check spelling, grammar, names, facts and page layout before sharing. A spell checker cannot confirm that every fact is true. Acknowledge sources and do not submit another person's work as your own."]
+],
+q:[
+{t:"NERDC practice",q:"Which application is mainly used to create and format text documents?",o:["Word processor","Media player","Calculator only","Device manager"],a:0,e:"A word processor is designed to create, edit and format text documents."},
+{t:"NERDC practice",q:"Which feature is useful for organising a document into clear sections?",o:["Headings and styles","Random font changes","Unrelated animations","Turning off the screen"],a:0,e:"Headings and styles provide structure and make documents easier to navigate."},
+{t:"NERDC practice",q:"What should you do after creating a new document?",o:["Save it with a meaningful name in the correct folder","Close it without saving","Share it publicly immediately","Delete the title"],a:0,e:"Saving protects your work and makes it easier to find later."},
+{t:"NERDC practice",q:"Why is proofreading still needed when a spell checker is available?",o:["A spell checker may not detect incorrect facts or correctly spelled words used wrongly","A spell checker always removes every error","Proofreading changes the operating system","Spell checkers cannot examine text"],a:0,e:"Automated tools have limits; people must check meaning, facts and context."},
+{t:"WAEC-style practice",q:"State four features of word-processing software.",e:"Any four: text entry and editing, formatting, spell check, paragraph alignment, lists, tables, page layout, headers and footers, comments, printing or saving."}
+],
+p:{s:["Open an approved word processor or use a teacher-provided screenshot if a device is unavailable.","Create a one-page notice for a fictional school club. Add a title, short paragraphs and a bulleted list.","Apply consistent heading and paragraph formatting. Insert a small table if it helps organise the information.","Save the document in the correct folder with a meaningful file name, then proofread it and correct errors."],c:["Created a document with a clear title","Used readable and consistent formatting","Organised information with paragraphs or a list","Saved the file with a meaningful name","Proofread spelling, meaning and layout"]}
+};
