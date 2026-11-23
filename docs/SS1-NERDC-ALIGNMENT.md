@@ -402,4 +402,4 @@ These sources support selected historical milestones; they do not establish full
 
 ### Verification limits
 
-Source-level changes are prepared. JavaScript syntax, practical-table rendering, mobile/desktop layout, keyboard navigation and screen-reader reading order still require verification. No teacher sign-off, official-PDF line-by-line verification, merge or deployment is implied.
+Source-level validation completed: both `data.js` and `app.js` pass JavaScript syntax compilation; evaluating `data.js` produces all 24 SS1 lesson records; the four new rubrics each contain four criteria with three performance levels; and the renderer contains the semantic rubric table template. This does not execute the browser UI. Practical-table rendering, mobile/desktop layout, keyboard navigation and screen-reader reading order still require real-browser verification. No teacher sign-off, official-PDF line-by-line verification, merge or deployment is implied.
