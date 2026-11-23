@@ -19,7 +19,9 @@ async function makeTestLicense() {
   throw new Error("Could not generate a URL-safe Base64 licence fixture");
 }
 test.beforeEach(async ({page}) => {
-  const fixture=await makeTestLicense();\n  const {keyring,licence}=fixture;\n  page.licenceFixtures=fixture;
+  const fixture=await makeTestLicense();
+  const {keyring,licence}=fixture;
+  page.licenceFixtures=fixture;
   await page.addInitScript(({value,publicKeyring})=>{
     localStorage.setItem("emac",JSON.stringify({n:"Acceptance Tester",c:"ss1",fs:18,th:"",sp:0,d:{},lic:value}));
     const nativeFetch=window.fetch.bind(window);
