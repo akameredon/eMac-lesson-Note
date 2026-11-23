@@ -43,12 +43,28 @@ test("all 24 SS1 lesson records contain notes, practice and practical activities
     first=false;
     await page.locator('button[data-a="topic"][data-k="'+key+'"]').click();
     await expect(page.locator(".card h3").first(),key+" notes").toBeVisible();
-    if(key==="ss1-1-6") await expect(page.getByRole("heading",{name:"Sequence, selection and iteration"})).toBeVisible();
+    if(key==="ss1-1-6"){
+      await expect(page.getByRole("heading",{name:"Sequence, selection and iteration",exact:true})).toBeVisible();
+      await expect(page.getByRole("heading",{name:"Selection examples: number classification and mock login",exact:true})).toBeVisible();
+    }
+    if(key==="ss1-2-2") await expect(page.getByRole("heading",{name:"Webpages, websites and website behaviour",exact:true})).toBeVisible();
+    if(key==="ss1-3-3") await expect(page.getByRole("heading",{name:"Percentages in data",exact:true})).toBeVisible();
+    if(key==="ss1-3-8") await expect(page.getByRole("heading",{name:"Worked SQL example using SQLite",exact:true})).toBeVisible();
+    if(key==="ss1-3-9") await expect(page.getByRole("heading",{name:"Stages of image recognition",exact:true})).toBeVisible();
+    if(key==="ss1-3-10") await expect(page.getByRole("heading",{name:"Build record, control functions and calibration",exact:true})).toBeVisible();
+    if(key==="ss1-2-8") await expect(page.getByRole("heading",{name:"Location and privacy controls",exact:true})).toBeVisible();
+    if(key==="ss1-2-9") await expect(page.getByRole("heading",{name:"Secure school email",exact:true})).toBeVisible();
     await page.locator('button[data-a="tab"][data-v="q"]').click();
     await expect(page.locator(".q").first(),key+" practice questions").toBeVisible();
     await page.locator('button[data-a="tab"][data-v="p"]').click();
     await expect(page.locator(".card ol li").first(),key+" practical steps").toBeVisible();
     await expect(page.locator(".ck input[type='checkbox']").first(),key+" assessment checklist").toBeVisible();
+    if(key==="ss1-2-10") await expect(page.getByText(/teacher-managed, school-approved demonstration account/)).toBeVisible();
+    if(key==="ss1-3-8") await expect(page.getByText(/three related tables/)).toBeVisible();
+    if(key==="ss1-2-1") await expect(page.getByText(/ping command/)).toBeVisible();
+    if(key==="ss1-2-8") await expect(page.getByText(/location-permission control/)).toBeVisible();
+    if(key==="ss1-2-9") await expect(page.getByText(/school email demonstration/)).toBeVisible();
+    if(key==="ss1-3-4") await expect(page.getByText(/sample advertisement for a local business/)).toBeVisible();
   }
 });
 test("tampered licence signatures are rejected",async ({page})=>{
