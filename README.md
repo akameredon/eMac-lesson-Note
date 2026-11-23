@@ -6,7 +6,7 @@ Offline, installable PWA for SS1–SS3 Digital Technologies (NERDC scheme): note
 `python3 -m http.server 8080` then open http://localhost:8080 (service workers need localhost or HTTPS). Hosting on GitHub Pages works.
 
 ## Licence keys (offline, per school, yearly expiry)
-1. `node keygen.mjs init` — creates `private.pem` (keep secret, never commit) and `pub.json` (commit it).
+1. `node keygen.mjs init` — creates `private.pem` (keep secret, never commit) and `pub.json` (commit it). It refuses to overwrite either file; verify and back up the current keypair before any deliberate rotation.
 2. `node keygen.mjs issue "School Name" 2027-07-31` — prints the key to give the school.
 3. School pastes it in Settings. Without a key only topics marked `free:1` open.
 Note: expiry uses the device clock, so this deters casual sharing, not determined bypass.
