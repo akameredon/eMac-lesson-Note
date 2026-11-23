@@ -17,7 +17,7 @@ async function makeTestLicense() {
 }
 test.beforeEach(async ({page}) => {
   const {keyring,licence}=await makeTestLicense();
-  await page.addInitScript(({value,publicKey})=>{
+  await page.addInitScript(({value,publicKeyring})=>{
     localStorage.setItem("emac",JSON.stringify({n:"Acceptance Tester",c:"ss1",fs:18,th:"",sp:0,d:{},lic:value}));
     const nativeFetch=window.fetch.bind(window);
     window.fetch=(input,init)=>{
