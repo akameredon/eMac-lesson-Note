@@ -3,7 +3,7 @@ let S={n:"",c:"ss1",fs:18,th:"",sp:0,d:{},lic:""},L={ok:0,msg:"No licence key ye
 try{Object.assign(S,JSON.parse(localStorage.getItem("emac")||"{}"))}catch(e){}
 const sv=()=>{try{localStorage.setItem("emac",JSON.stringify(S))}catch(e){}},
 esc=s=>String(s).replace(/[&<>"]/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;"}[c])),
-b64=s=>Uint8Array.from(atob(s.replace(/-/g,"+").replace(/_/g,"/")),c=>c.charCodeAt(0)),
+b64=s=>{const v=String(s).replace(/-/g,"+").replace(/_/g,"/");return Uint8Array.from(atob(v+"=".repeat((4-v.length%4)%4)),c=>c.charCodeAt(0))},
 meta=k=>{const[c,t,w]=k.split("-");return CUR[c][t].find(x=>x[0]==w)},
 can=k=>L.ok||(C[k]&&C[k].free),
 view=h=>{clearInterval(tm);A.innerHTML=h;const f=A.querySelector("h1");f&&(f.tabIndex=-1,f.focus());scrollTo(0,0)};
