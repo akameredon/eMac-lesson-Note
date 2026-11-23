@@ -159,7 +159,7 @@ This preserves existing topic IDs and the existing `n`, `q`, and `p` data shape 
 
 The six reference lesson titles are retained in the lesson notes. Hardware, input/output and storage are grouped under the existing Computer Hardware topic because the current app's topic model has no separate topic IDs for those sublessons. The remaining revised NERDC competencies must also be covered in a curriculum-aligned SS1 pathway. The old 70-entry outline should be treated as legacy planning material until each entry is checked against the revised curriculum—not silently assumed to be compliant.
 
-**First-pass automated content validation on the improvement branch:** 70 existing curriculum-map entries remain present; the four updated lesson records each contain notes, practice questions, practical steps and marking checklist items; all multiple-choice answer indexes are valid. This is a data/schema check, not a substitute for teacher review or browser testing.
+**First-pass automated content validation on the improvement branch:** 70 existing curriculum-map entries remain present; the four updated lesson records each contain measurable learning goals, key vocabulary, notes, practice questions, practical steps and marking checklist items; all six reference lesson titles are present and all multiple-choice answer indexes are valid. This is a data/schema check, not a substitute for teacher review or browser testing.
 
 ## Content quality standard for every completed lesson
 
