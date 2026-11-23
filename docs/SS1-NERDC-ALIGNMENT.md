@@ -227,11 +227,19 @@ Each lesson should include, as appropriate:
 
 This does not mean the SS1 release is complete. Teacher review and browser-level testing remain open.
 
+### Additional QA corrections on this branch
+
+- Teacher progress exports now use a versioned format that records correct answers, attempted objective questions and the available question count separately. New teacher reports calculate accuracy from attempted questions, rather than treating every unattempted question in the bank as incorrect.
+- Existing unversioned progress codes remain readable and are explicitly labelled as legacy scores because their original export format did not preserve an attempted-question count.
+- Teacher CSV headings now match the on-screen report columns.
+- The key generator's usage message now matches its actual root-level location (`node keygen.mjs`).
+- Added `.gitignore` rules for `private.pem`, other PEM files, environment files and generated local dependencies. No private signing key or public key file exists in this repository branch; `pub.json` is still required and must be created from the intended existing keypair. Do not generate a replacement keypair until the owner confirms no previously issued school keys depend on another private key.
+
 ## Remaining acceptance sequence
 
 1. Teacher review the lesson accuracy, curriculum wording, question answers, practical instructions and marking checklists.
 2. Verify all lessons in the existing app: Notes, Practice, Practical, Listen, CBT, progress code and teacher reporting.
 3. Test on mobile viewport sizes and check keyboard, focus, text scaling, spacing and screen-reader behaviour.
 4. Test a fresh install and an upgrade from the prior service-worker cache; confirm that lesson data is available offline after installation.
-5. Test the existing licence flow, including the missing `pub.json` setup issue documented in the repository audit. Do not generate or rotate signing keys without a migration plan.
+5. Test the existing licence flow. The repository currently has no `pub.json` or private signing key; identify and preserve the intended keypair, add only its matching public JWK as `pub.json`, then test valid, invalid and expired keys. Do not generate or rotate signing keys without a migration plan.
 6. Only after content review and browser/offline tests pass, consider merging the improvement branch.
