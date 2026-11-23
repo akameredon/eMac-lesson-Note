@@ -25,6 +25,28 @@ async function openPractical(page,key) {
   await page.locator('button[data-a="topic"][data-k="'+key+'"]').click();
   await page.locator('button[data-a="tab"][data-v="p"]').click();
 }
+const ALL_SS1_LESSONS = ["ss1-1-1","ss1-1-2","ss1-1-3","ss1-1-4","ss1-1-6","ss1-1-8","ss1-1-9","ss1-1-10","ss1-2-1","ss1-2-2","ss1-2-3","ss1-2-4","ss1-2-6","ss1-2-8","ss1-2-9","ss1-2-10","ss1-3-1","ss1-3-2","ss1-3-3","ss1-3-4","ss1-3-6","ss1-3-8","ss1-3-9","ss1-3-10"];
+test("all 24 SS1 lesson records contain notes, practice and practical activities",async ({page})=>{
+  for(const key of ALL_SS1_LESSONS){
+    await page.locator('button[data-a="home"]').first().click().catch(()=>{});
+    await page.locator('button[data-a="topic"][data-k="'+key+'"]').click();
+    await expect(page.locator(".card h3").first(),key+" notes").toBeVisible();
+    await page.locator('button[data-a="tab"][data-v="q"]').click();
+    await expect(page.locator(".q").first(),key+" practice questions").toBeVisible();
+    await page.locator('button[data-a="tab"][data-v="p"]').click();
+    await expect(page.locator(".card ol li").first(),key+" practical steps").toBeVisible();
+    await expect(page.locator(".ck input[type='checkbox']").first(),key+" assessment checklist").toBeVisible();
+  }
+});
+test("tampered licence signatures are rejected",async ({page})=>{
+  await page.locator('button[data-a="gear"]').click();
+  const field=page.locator("#lk");
+  const parts=(await field.inputValue()).split(".");
+  parts[1]=(parts[1][0]==="A"?"B":"A")+parts[1].slice(1);
+  await field.fill(parts.join("."));
+  await page.locator('button[data-a="lic"]').click();
+  await expect(page.locator(".lic")).toContainText("That licence key is not valid.");
+});
 test("home and class navigation render without page errors",async ({page})=>{
   const errors=[];page.on("pageerror",error=>errors.push(error.message));
   await expect(page.getByRole("heading",{name:"Digital Technologies"})).toBeVisible();
