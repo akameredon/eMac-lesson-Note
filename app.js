@@ -4,7 +4,7 @@ try{Object.assign(S,JSON.parse(localStorage.getItem("emac")||"{}"))}catch(e){}
 S.d=S.d||{};S.done=Array.isArray(S.done)?S.done:[];S.best=Number(S.best)||0;S.checks=S.checks&&typeof S.checks==="object"?S.checks:{};
 const sv=()=>{try{localStorage.setItem("emac",JSON.stringify(S))}catch(e){}},
 esc=s=>String(s).replace(/[&<>"]/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;"}[c])),
-b64=s=>Uint8Array.from(atob(s.replace(/-/g,"+").replace(/_/g,"/")),c=>c.charCodeAt(0)),
+b64=s=>{const v=String(s).replace(/-/g,"+").replace(/_/g,"/");return Uint8Array.from(atob(v+"=".repeat((4-v.length%4)%4)),c=>c.charCodeAt(0))},
 meta=k=>{const[c,t,w]=k.split("-");return CUR[c][t].find(x=>x[0]==w)},
 can=k=>L.ok||(C[k]&&C[k].free),
 view=h=>{clearInterval(tm);A.innerHTML=h;const f=A.querySelector("h1");f&&(f.tabIndex=-1,f.focus());scrollTo(0,0)};
@@ -95,5 +95,5 @@ case"conv":{const n=Math.floor(+$("#num").value);$("#out").textContent=n>=0?`Bin
 case"say":try{speechSynthesis.cancel();speechSynthesis.speak(new SpeechSynthesisUtterance($(".lesson-body")?.innerText||$("#app").innerText))}catch(x){}break;
 case"lic":S.lic=$("#lk").value.trim();sv();L=await chk(S.lic);sett();break}});
 apply();home();
-if(S.lic)chk(S.lic).then(r=>{L=r;if(A.querySelector(".lic")&&A.querySelector(".ls"))home()});
+if(S.lic)chk(S.lic).then(r=>{L=r;if(A.querySelector(".lic")&&A.querySelector(".lesson-list"))home()});
 if("serviceWorker"in navigator)navigator.serviceWorker.register("sw.js");
