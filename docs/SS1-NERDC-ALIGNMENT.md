@@ -233,7 +233,7 @@ This does not mean the SS1 release is complete. Teacher review and browser-level
 - Existing unversioned progress codes remain readable and are explicitly labelled as legacy scores because their original export format did not preserve an attempted-question count.
 - Teacher CSV headings now match the on-screen report columns.
 - The key generator's usage message now matches its actual root-level location (`node keygen.mjs`).
-- Added `.gitignore` rules for `private.pem`, other PEM files, environment files and generated local dependencies. No private signing key or public key file exists in this repository branch; `pub.json` is still required and must be created from the intended existing keypair. Do not generate a replacement keypair until the owner confirms no previously issued school keys depend on another private key.
+- Added `.gitignore` rules for `private.pem`, other PEM files, environment files and generated local dependencies. The key generator now refuses to overwrite an existing `private.pem` or `pub.json`, reducing accidental key rotation risk. No private signing key or public key file exists in this repository branch; `pub.json` is still required and must be created from the intended existing keypair. Do not generate a replacement keypair until the owner confirms no previously issued school keys depend on another private key.
 
 ## Remaining acceptance sequence
 
