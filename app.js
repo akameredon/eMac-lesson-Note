@@ -8,7 +8,7 @@ meta=k=>{const[c,t,w]=k.split("-");return CUR[c][t].find(x=>x[0]==w)},
 can=k=>L.ok||(C[k]&&C[k].free),
 view=h=>{clearInterval(tm);A.innerHTML=h;const f=A.querySelector("h1");f&&(f.tabIndex=-1,f.focus());scrollTo(0,0)};
 function apply(){const r=document.documentElement;r.style.fontSize=S.fs+"px";S.th?r.dataset.theme=S.th:delete r.dataset.theme;r.dataset.sp=S.sp}
-async function chk(k){try{const[p,s]=k.trim().split("."),pub=await(await fetch("pub.json")).json(),key=await crypto.subtle.importKey("jwk",pub,{name:"ECDSA",namedCurve:"P-256"},false,["verify"]);
+async function chk(k){try{const[p,s]=k.trim().split("."),response=await fetch("pub.json");if(!response.ok)return{ok:0,msg:"Licence verification is not configured: the public key file is missing."};const pub=await response.json(),key=await crypto.subtle.importKey("jwk",pub,{name:"ECDSA",namedCurve:"P-256"},false,["verify"]);
 if(!await crypto.subtle.verify({name:"ECDSA",hash:"SHA-256"},key,b64(s),b64(p)))return{ok:0,msg:"That licence key is not valid."};
 const d=JSON.parse(new TextDecoder().decode(b64(p)));
 if(new Date(d.exp+"T23:59:59")<new Date())return{ok:0,msg:d.school+": licence expired on "+d.exp+". Ask for a renewal key."};
