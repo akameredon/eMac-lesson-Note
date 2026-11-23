@@ -1,0 +1,34 @@
+name: Browser acceptance
+on:
+  push:
+    branches: [improve/ss1-nerdc-alignment]
+  pull_request:
+    branches: [main]
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  chromium:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 20
+          cache: npm
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.x"
+      - run: npm install
+      - run: npx playwright install --with-deps chromium
+      - run: npm run test:browser
+      - name: Upload failure evidence
+        if: failure()
+        uses: actions/upload-artifact@v4
+        with:
+          name: playwright-failure-evidence
+          path: |
+            test-results/
+            playwright-report/
+          if-no-files-found: ignore
