@@ -42,19 +42,14 @@ The existing 70-entry term/week map is a legacy planning structure. It is preser
 
 ## Gaps and actions still requiring evidence
 
-1. **Python practical validation:** run the syntax, runtime and semantic/logical error examples in a school-approved Python environment and confirm learners can correct each one.
-2. **Social-media class group:** ask a teacher to confirm that the teacher-managed, school-approved class-group workflow matches the school's approved platform and safeguarding policy. No learner should be directed to create an unsupervised public account.
-3. **AI classifier:** test the recommended tool in the actual school context; provide an offline/paper fallback and do not imply that a paper activity trained an AI model.
-4. **Robotics:** validate the two-wheel differential-drive activity against a real available kit and safe wiring instructions. A paper/simulator activity is not a physical build.
-5. **DBMS:** test the related-table task using at least one approved relational DBMS; a spreadsheet-only simulation is not a completed database practical.
-6. **Networking:** teacher-supervised LAN test must use isolated/approved equipment, not an unauthorised live school network.
-7. **Independent teacher judgement:** complete the 24-lesson review pack and record lesson-level ratings, evidence, corrections and final recommendation.
-8. **School-context validation:** confirm the approved email/social platforms, privacy controls, Python environment, local DBMS and safe LAN/robotics equipment available at the actual school.
+1. **School-context practical validation:** run the Python examples, Teachable Machine image-classifier activity, three-table SQLite practical, teacher-approved LAN/ping test and physical robot build using the actual school equipment. Record which activities were completed physically and which were simulations.
+2. **Safeguarding and platform approval:** a teacher must confirm the school's approved email/social platforms, location-permission demonstration and class-group workflow. No learner should be directed to create an unsupervised public account or expose private details.
+3. **Independent teacher judgement:** complete the 24-lesson review pack and record lesson-level ratings, evidence, corrections and a final classroom-pilot recommendation.
 
 ## Verification policy
 
-- “Covered in authored content” means a matching lesson note/practical was located in data.js; it does not mean a teacher has approved it or learners have demonstrated mastery.
-- “Partially evidenced” identifies a specific item needing a further correction or review.
+- “Covered in authored content” means a matching lesson note, practice task or practical was located in data.js; it does not mean a teacher has approved it or learners have demonstrated mastery.
+- The competency mapping is checked against the primary NERDC PDF's published learning outcomes and performance objectives. It is an internal audit, not NERDC approval, accreditation or certification.
 - Practical activities must distinguish physical builds from paper or simulator alternatives.
 - The app must not claim NERDC endorsement, accreditation or certification.
-- Curriculum coverage is not marked fully verified until the primary PDF comparison and independent teacher review are complete.
+- Curriculum coverage is not marked fully verified until independent teacher review and school-context practical validation are complete.
