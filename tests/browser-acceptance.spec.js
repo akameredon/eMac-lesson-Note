@@ -3,7 +3,7 @@ const { webcrypto } = require("node:crypto");
 const RUBRIC_LESSONS = ["ss1-1-2","ss1-1-4","ss1-1-6","ss1-1-8","ss1-1-9","ss1-2-1","ss1-2-2","ss1-2-6","ss1-2-8","ss1-3-2","ss1-3-3","ss1-3-4","ss1-3-8","ss1-3-9","ss1-3-10"];
 const b64url = bytes => Buffer.from(bytes).toString("base64url");
 async function makeTestLicense() {
-  const payloadBytes = Buffer.from(JSON.stringify({school:"Browser Acceptance Test School",exp:"2099-12-31"}));
+  const payloadBytes = Buffer.from(JSON.stringify({v:2,kid:"test-key-2026",licenceId:"00000000-0000-4000-8000-000000000001",school:"Browser Acceptance Test School",exp:"2099-12-31"}));
   const payload = b64url(payloadBytes);
   // Ensure the fixture exercises both URL-safe Base64 characters, not just alphanumerics.
   for (let attempt=0;attempt<20;attempt++) {
@@ -11,23 +11,23 @@ async function makeTestLicense() {
     const pub = await webcrypto.subtle.exportKey("jwk",pair.publicKey);
     const signature = await webcrypto.subtle.sign({name:"ECDSA",hash:"SHA-256"},pair.privateKey,payloadBytes);
     const encoded = b64url(signature);
-    if ((payload+encoded).includes("-") && (payload+encoded).includes("_")) return {pub,licence:payload+"."+encoded};
+    if ((payload+encoded).includes("-") && (payload+encoded).includes("_")) return {keyring:{version:1,activeKeyId:"test-key-2026",keys:{"test-key-2026":pub}},licence:payload+"."+encoded};
   }
   throw new Error("Could not generate a URL-safe Base64 licence fixture");
 }
 test.beforeEach(async ({page}) => {
-  const {pub,licence}=await makeTestLicense();
+  const {keyring,licence}=await makeTestLicense();
   await page.addInitScript(({value,publicKey})=>{
     localStorage.setItem("emac",JSON.stringify({n:"Acceptance Tester",c:"ss1",fs:18,th:"",sp:0,d:{},lic:value}));
     const nativeFetch=window.fetch.bind(window);
     window.fetch=(input,init)=>{
       const requestUrl=typeof input==="string"?input:input.url;
-      if(new URL(requestUrl,location.href).pathname.endsWith("/pub.json")){
-        return Promise.resolve(new Response(JSON.stringify(publicKey),{status:200,headers:{"Content-Type":"application/json"}}));
+      if(new URL(requestUrl,location.href).pathname.endsWith("/keys.json")){
+        return Promise.resolve(new Response(JSON.stringify(publicKeyring),{status:200,headers:{"Content-Type":"application/json"}}));
       }
       return nativeFetch(input,init);
     };
-  },{value:licence,publicKey:pub});
+  },{value:licence,publicKeyring:keyring});
   await page.goto("/");
   await expect(page.locator(".lic")).toContainText("Browser Acceptance Test School");
 });
